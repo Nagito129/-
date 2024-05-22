@@ -5,6 +5,7 @@ System_Item::System_Item(QWidget* parent)
 {
 	sys.setupUi(this);
 	sys.Info->hide();
+	sys.Position->hide();
 	this->setFixedSize(300, 25);
 	
 
@@ -29,6 +30,8 @@ void System_Item::Set_Params(QStringList Params, QString Icon)
 	sys.Width_Edit->setText(Params[4]);
 	sys.Lenght_Edit->setText(Params[5]);
 	sys.Weight_Edit->setText(Params[6]);
+	sys.X_pos->setText(Params[7]);
+	sys.Y_pos->setText(Params[8]);
 
 	Set_Workload();
 }
@@ -101,10 +104,12 @@ void System_Item::Info()
 {
 	if (sys.Info->isHidden()) {
 		sys.Info->show();
-		this->setFixedHeight(200);
+		sys.Position->show();
+		this->setFixedHeight(275);
 	}
 	else {
 		sys.Info->hide();
+		sys.Position->hide();
 		this->setFixedHeight(25);
 	}
 }
