@@ -20,7 +20,7 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
 
 //Cosmetika progi:
     setWindowTitle("NS Editor");
-    setWindowIcon(QIcon("Textures/Icons/NSE_Icon.png"));
+    setWindowIcon(QIcon("Textures/Icons/Main Icons/NSE_Icon.png"));
 
     this->setGeometry(Screen_W / 2, Screen_H / 2, 1200, 700);
     this->setMinimumSize(1000, 712);

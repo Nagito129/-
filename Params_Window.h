@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QValidator>
 #include "ui_Params_Window.h"
 
 class Params_Window : public QDialog
