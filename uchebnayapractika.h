@@ -51,6 +51,7 @@ private:
 
     QList <System_Item*> Items;
     
+    Mods Mod;
 
     void Console_Widget(bool isKey);
     void Pout(QString String);

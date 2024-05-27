@@ -4,7 +4,7 @@
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QMainWindow>
+
 
 class Square_Sample : public QGraphicsItem
 {
@@ -14,14 +14,20 @@ public:
 
     void Set_Workload(QColor Color, qreal Workload);
 
+
+
 protected:
     QRectF boundingRect() const override;
     void paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget) override;
-
+    //void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* Event) override;
 private:
-    enum Mode {
-
+    enum Mods {
+        OFF = 0,
+        ROTATE = 1,
+        MOVE = 2,
     };
+    
+    Mods Mod = OFF;
 
     QString Name;
     qreal Lenght,

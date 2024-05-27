@@ -214,8 +214,14 @@ void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)
     ui.verticalLayout_6->addWidget(Item);
     Items.append(Item);
 
-    Plan.addItem(Item->Square);
-    Item->Square->setPos(0, 0);
+    if (Form == SQUARE) {
+        Plan.addItem(Item->Square);
+        Item->Square->setPos(0, 0);
+    }
+
+    else if (Form == CIRCLE) {
+
+    }
 }
 
 void uchebnayapractika::Delete()
