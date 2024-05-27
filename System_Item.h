@@ -2,6 +2,7 @@
 #include <qwidget.h>
 
 #include "ui_System_Item.h"
+#include "Square_Sample.h"
 
 class System_Item : public QWidget
 {
@@ -14,6 +15,12 @@ public:
 
 	QStringList Params;
 	QStringList Get_Params();
+
+	QColor Color;
+	qreal Workload;
+
+	Square_Sample* Square;
+
 private:
 	Ui::Sistem_Item sys;
 	void Status_Color();
@@ -22,9 +29,6 @@ private:
 public slots:
 	void Set_Firm();
 	void Set_Seria();
-	void Set_Height();
-	void Set_Width();
-	void Set_Lenght();
 	void Set_Weidh();
 	void Info();
 	

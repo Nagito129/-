@@ -2,6 +2,7 @@
 
 #include <QDialog>
 #include <QValidator>
+#include <QMessageBox>
 #include "ui_Params_Window.h"
 
 class Params_Window : public QDialog

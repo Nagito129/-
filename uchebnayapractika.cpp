@@ -85,6 +85,9 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
     connect(ui.Circle_Button, SIGNAL(pressed()), this, SLOT(Add_Circle()));
 
     connect(ui.Hide_Button, SIGNAL(pressed()), this, SLOT(Console_Widget()));
+
+    ui.Scene->setScene(&Plan);
+    ui.Scene->setRenderHint(QPainter::Antialiasing);
 }
 
 uchebnayapractika::~uchebnayapractika()
@@ -157,7 +160,7 @@ void uchebnayapractika::keyPressEvent(QKeyEvent* e)
     if (e->key() == Qt::Key_F1) {
         Console_Widget(true);
     }
-
+    
 }
 //^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -185,21 +188,22 @@ void uchebnayapractika::Delete_All()
 
 void uchebnayapractika::Add_Square()
 {
-    Add_Item("Square_Icon.png");
+    Add_Sys_Item("Square_Icon.png", SQUARE);
 }
 
 void uchebnayapractika::Add_Circle()
 {
-    Add_Item("Circle_Icon.png");
+    Add_Sys_Item("Circle_Icon.png", CIRCLE);
 }
 
-void uchebnayapractika::Add_Item(QString Path)
+void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)
 {
+
     Params_Window Window;
     Window.setModal(1);
     Window.exec();
     QStringList Params = Window.Get_Params();
-    
+
     Pout("<QStringList> Params:");
     for (int i = 0; i < Params.size(); i++) {
         Pout("=== " + Params[i]);
@@ -208,8 +212,10 @@ void uchebnayapractika::Add_Item(QString Path)
     Item = new System_Item;
     Item->Set_Params(Params, Path);
     ui.verticalLayout_6->addWidget(Item);
-    
-    
+    Items.append(Item);
+
+    Plan.addItem(Item->Square);
+    Item->Square->setPos(0, 0);
 }
 
 void uchebnayapractika::Delete()

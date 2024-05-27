@@ -10,6 +10,7 @@
 
 #include "ui_uchebnayapractika.h"
 #include "System_Item.h"
+#include "Square_Sample.h"
 #include "Params_Window.h"
 
 using namespace std;
@@ -28,17 +29,33 @@ protected:
 private:
     Ui::uchebnayapractikaClass ui;
     
+    enum Mods {
+        M_OFF = 0,
+        M_ADD = 1,
+        M_DELETE = 2,
+        M_MOVE = 3
+    };
+
+    enum System_Form {
+        SQUARE = 0,
+        CIRCLE = 1
+    };
+
     const QRectF Screen_Geometry = geometry();
     const qreal Screen_H = Screen_Geometry.height(),
             Screen_W = Screen_Geometry.width();
-
     QString File_Name;
     System_Item* Item;
-    QVector <System_Item> Sys_Item_Widgets;
+    Square_Sample* Square;
+    QGraphicsScene Plan;
+
+    QList <System_Item*> Items;
+    
 
     void Console_Widget(bool isKey);
     void Pout(QString String);
-    void Add_Item(QString Path);
+    void Add_Sys_Item(QString Path, System_Form Form);
+
 
 public slots:
     void Console_Widget();

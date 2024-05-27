@@ -97,6 +97,7 @@
     <QtUic Include="uchebnayapractika.ui" />
     <QtMoc Include="uchebnayapractika.h" />
     <ClCompile Include="Params_Window.cpp" />
+    <ClCompile Include="Square_Sample.cpp" />
     <ClCompile Include="System_Item.cpp" />
     <ClCompile Include="uchebnayapractika.cpp" />
     <ClCompile Include="main.cpp" />
@@ -107,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Params_Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Square_Sample.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
