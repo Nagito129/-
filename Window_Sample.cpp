@@ -1,5 +1,14 @@
+/**
+ * @file Window_Sample.h
+ * @brief Реализация методов класса Window_Sample
+ */
 #include "Window_Sample.h"
 
+ /**
+  * @brief Конструктор класса Window_Sample с параметрами длины и ширины
+  * @param Length Длина окна
+  * @param Width Ширина окна
+  */
 Window_Sample::Window_Sample(qreal Length, qreal Width)
 {
 	this->Length = Length;
@@ -17,6 +26,9 @@ Window_Sample::Window_Sample(qreal Length, qreal Width)
 	Mode = OFF;
 }
 
+/**
+ * @brief Конструктор класса Window_Sample по умолчанию
+ */
 Window_Sample::Window_Sample()
 {
 	setAcceptHoverEvents(true);
@@ -29,6 +41,10 @@ Window_Sample::Window_Sample()
 	Coliding_Color.setAlpha(140);
 }
 
+/**
+ * @brief Установка режима для элемента
+ * @param Mode Режим: 0 - OFF, 1 - MOVE, 3 - DELETE
+ */
 void Window_Sample::Set_Mode(int Mode)
 {
 	if (Mode == 0) {
@@ -42,11 +58,19 @@ void Window_Sample::Set_Mode(int Mode)
 	}
 }
 
+/**
+ * @brief Получение флага удаления элемента
+ * @return true, если элемент должен быть удален, иначе - false
+ */
 bool Window_Sample::Get_Delete_Flag()
 {
 	return Delete_Flag;
 }
 
+/**
+ * @brief Проверка возможности размещения элемента на сцене
+ * @return true, если нет коллизий, иначе - false
+ */
 bool Window_Sample::Spawn_Accept()
 {
 	if (scene()->collidingItems(this).isEmpty()) {
@@ -60,17 +84,31 @@ bool Window_Sample::Spawn_Accept()
 	}
 }
 
+/**
+ * @brief Определение прямоугольной области, занимаемой элементом
+ * @return Прямоугольная область
+ */
 QRectF Window_Sample::boundingRect() const
 {
 	return QRectF(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
+/**
+ * @brief Отрисовка элемента
+ * @param Painter Объект рисования
+ * @param Option Опции стиля
+ * @param Widget Виджет
+ */
 void Window_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
 	Painter->setBrush(Object_Color);
 	Painter->drawRect(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
+/**
+ * @brief Обработка события перемещения мыши
+ * @param Event Событие перемещения мыши
+ */
 void Window_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 {
 	if (Mode == SIZE || (Mode == SPAWN && (Edge == TOP || Edge == BOT || Edge == LEFT || Edge == RIGHT))) {
@@ -110,6 +148,10 @@ void Window_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 	}
 }
 
+/**
+ * @brief Обработка события нажатия кнопки мыши
+ * @param Event Событие нажатия кнопки мыши
+ */
 void Window_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
 	this->setZValue(1);
@@ -133,6 +175,10 @@ void Window_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 	}
 }
 
+/**
+ * @brief Обработка события отпускания кнопки мыши
+ * @param Event Событие отпускания кнопки мыши
+ */
 void Window_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
 	if (Mode == SIZE || Mode == MOVE) {
@@ -170,6 +216,11 @@ void Window_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 		update();
 	}
 }
+
+/**
+ * @brief Обработка события перемещения курсора мыши над элементом
+ * @param Event Событие перемещения курсора мыши
+ */
 void Window_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 {
 	if (Mode == MOVE || Mode == SIZE || Mode == SPAWN) {
@@ -215,6 +266,10 @@ void Window_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 	}
 }
 
+/**
+ * @brief Обработка события выхода курсора мыши за пределы элемента
+ * @param Event Событие выхода курсора мыши за пределы элемента
+ */
 void Window_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 {
 	if (Mode == SIZE) {
@@ -223,6 +278,10 @@ void Window_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 	}
 }
 
+/**
+ * @brief Проверка коллизий элемента с другими элементами на сцене
+ * @return true, если есть коллизии, иначе - false
+ */
 bool Window_Sample::Check_Coliding()
 {
 	if (scene()->collidingItems(this).isEmpty()) {
@@ -238,16 +297,28 @@ bool Window_Sample::Check_Coliding()
 	}
 }
 
+/**
+ * @brief Установка цвета элемента
+ * @param Color Цвет элемента
+ */
 void Window_Sample::Set_Obj_Color(QColor Color)
 {
 	Object_Color = Color;
 	update();
 }
 
+/**
+ * @brief Получение длины элемента
+ * @return Длина элемента
+ */
 int Window_Sample::Get_Length() {
 	return Length;
 }
 
+/**
+ * @brief Получение ширины элемента
+ * @return Ширина элемента
+ */
 int Window_Sample::Get_Width() {
 	return Width;
 }

@@ -1,9 +1,16 @@
-
+/**
+ * @file uchebnayapractika.cpp
+ * @brief Реализация методов класса uchebnayapractika
+ */
 
 #include <QKeyEvent>
 
 #include "uchebnayapractika.h"
 
+ /**
+  * @brief Конструктор класса uchebnayapractika
+  * @param parent Указатель на родительский виджет
+  */
 uchebnayapractika::uchebnayapractika(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -11,13 +18,14 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
 
     ui.cmd_Scene->append("=== Program is running ===\n");
 
-//Cosmetika progi:
+    // Косметические настройки интерфейса:
     setWindowTitle("NS Editor");
     setWindowIcon(QIcon("Textures/Icons/Main Icons/NSE_Icon.png"));
 
     this->setGeometry(Screen_W / 2, Screen_H / 2, 1200, 700);
     this->setMinimumSize(1000, 712);
 
+    // Установка размеров кнопок и их иконок
     ui.Save_Button->setFixedSize(30, 30);
     ui.Open_File_Button->setFixedSize(30, 30);
     ui.Edit_Button->setFixedSize(30, 30);
@@ -52,12 +60,13 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
 
     ui.verticalLayout_6->setDirection(QBoxLayout::BottomToTop);
 
+    // Скрытие некоторых элементов интерфейса
     ui.Information->hide();
     ui.Editor->hide();
     ui.Add_Widget->hide();
     ui.Console->hide();
 
-// Programnie buttons:
+    // Подключение обработчиков событий для кнопок
     connect(ui.Edit_Button, SIGNAL(pressed()), this, SLOT(Tools_Widget()));
     connect(ui.Info_Button, SIGNAL(pressed()), this, SLOT(Info_Widget()));
     connect(ui.Open_File_Button, SIGNAL(pressed()), this, SLOT(Open()));
@@ -83,11 +92,17 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
 
 }
 
+/**
+ * @brief Деструктор класса uchebnayapractika
+ */
 uchebnayapractika::~uchebnayapractika()
 {
     Delete_All();
 }
 
+/**
+ * @brief Отображение/скрытие виджета с информацией
+ */
 void uchebnayapractika::Info_Widget()
 {
     if (!ui.Information->isHidden()) {
@@ -104,6 +119,9 @@ void uchebnayapractika::Info_Widget()
     }
 }
 
+/**
+ * @brief Отображение/скрытие виджета с инструментами редактирования
+ */
 void uchebnayapractika::Tools_Widget() {
     if (!ui.Editor->isHidden()) {
         ui.Editor->hide();
@@ -118,6 +136,9 @@ void uchebnayapractika::Tools_Widget() {
     }
 }
 
+/**
+ * @brief Отображение/скрытие виджета для добавления элементов
+ */
 void uchebnayapractika::Add_Widget()
 {
     if (ui.Add_Widget->isHidden()) {
@@ -149,9 +170,11 @@ void uchebnayapractika::Pout(QString String)
 
 
 
-
-
-void uchebnayapractika::keyPressEvent(QKeyEvent* e)/////////////////////////////////////////////////////////////////
+/**
+ * @brief Обработка нажатия клавиш
+ * @param e Указатель на объект события клавиатуры
+ */
+void uchebnayapractika::keyPressEvent(QKeyEvent* e)
 {
     if (e->key() == Qt::Key_F1) {
         Console_Widget(true);
@@ -215,7 +238,9 @@ void uchebnayapractika::keyPressEvent(QKeyEvent* e)/////////////////////////////
 }
 
 
-
+/**
+ * @brief Удаление всех элементов сцены
+ */
 void uchebnayapractika::Delete_All()
 {
     while (!Items.isEmpty())
@@ -231,16 +256,25 @@ void uchebnayapractika::Delete_All()
     ui.Editor->setDisabled(false);
 }
 
+/**
+ * @brief Добавление квадрата на сцену
+ */
 void uchebnayapractika::Add_Square()
 {
     Add_Sys_Item("Square_Icon.png", SQUARE);
 }
 
+/**
+ * @brief Добавление круга на сцену
+ */
 void uchebnayapractika::Add_Circle()
 {
     Add_Sys_Item("Circle_Icon.png", CIRCLE);
 }
 
+/**
+ * @brief Добавление стены на сцену
+ */
 void uchebnayapractika::Add_Wall()
 {
     is_Build = true;
@@ -252,6 +286,10 @@ void uchebnayapractika::Add_Wall()
     Build_Parts.append(Part);
 }
 
+
+/**
+ * @brief Добавление окна на сцену
+ */
 void uchebnayapractika::Add_Window()
 {
     is_Build = true;
@@ -263,6 +301,9 @@ void uchebnayapractika::Add_Window()
     Build_Parts.append(Part);
 }
 
+/**
+ * @brief Добавление двери на сцену
+ */
 void uchebnayapractika::Add_Door()
 {
     is_Build = true;
@@ -274,6 +315,9 @@ void uchebnayapractika::Add_Door()
     Build_Parts.append(Part);
 }
 
+/**
+ * @brief Добавление лестницы на сцену
+ */
 void uchebnayapractika::Add_Stairs()
 {
     is_Build = true;
@@ -285,6 +329,11 @@ void uchebnayapractika::Add_Stairs()
     Build_Parts.append(Part);
 }
 
+/**
+ * @brief Добавление элемента на сцену
+ * @param Path Путь к иконке элемента
+ * @param Form Форма элемента
+ */
 void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)///////////////////////////////////////////////////
 {
     is_Build = false;
@@ -323,6 +372,10 @@ void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)////////////
     }
 }
 
+/**
+ * @brief Установка режима для всех элементов и частей сцены
+ * @param Mode Режим
+ */
 void uchebnayapractika::Set_Items_And_Parts_Mode(int Mode)
 {
     for (int i = 0; i < Items.size(); i++) {
@@ -333,6 +386,9 @@ void uchebnayapractika::Set_Items_And_Parts_Mode(int Mode)
     }
 }
 
+/**
+ * @brief Удаление выбранных элементов
+ */
 void uchebnayapractika::Delete()
 {
     if (!ui.Add_Widget->isHidden()) {
@@ -343,6 +399,9 @@ void uchebnayapractika::Delete()
     
 }
 
+/**
+ * @brief Перемещение выбранных элементов
+ */
 void uchebnayapractika::Move()
 {
     if (!ui.Add_Widget->isHidden()) {
@@ -352,6 +411,9 @@ void uchebnayapractika::Move()
     Set_Items_And_Parts_Mode(1);
 }
 
+/**
+ * @brief Открытие файла проекта и загрузка данных из него
+ */
 void uchebnayapractika::Open()
 {
     Delete_All();
@@ -450,6 +512,9 @@ void uchebnayapractika::Open()
     File.close();
 }
 
+/**
+ * @brief Сохранение файла проекта
+ */
 void uchebnayapractika::Save()
 {
     if (Items.isEmpty() && Build_Parts.isEmpty()) {
@@ -501,6 +566,10 @@ void uchebnayapractika::Save()
     QMessageBox::information(this, "Progress", "The room is saved!\n Path: " + File_Name);
 }
 
+/**
+ * @brief Запись данных о элементах и частях сцены в файл
+ * @param File Файл для записи данных
+ */
 void uchebnayapractika::Write_In_File(QFile& File) {
     QXmlStreamWriter Xml(&File);
     Xml.setAutoFormatting(true);

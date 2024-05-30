@@ -1,3 +1,8 @@
+/**
+ * @file Params_Window.h
+ * @brief Объявление класса Params_Window для работы с окном параметров
+ */
+
 #pragma once
 
 #include <QDialog>
@@ -5,21 +10,39 @@
 #include <QMessageBox>
 #include "ui_Params_Window.h"
 
+ /**
+  * @brief Класс для работы с окном параметров
+  */
 class Params_Window : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	Params_Window(QWidget *parent = nullptr);
-	~Params_Window();
-	
-	QStringList Get_Params();
+    /**
+     * @brief Конструктор класса Params_Window
+     * @param parent Родительский виджет
+     */
+    Params_Window(QWidget* parent = nullptr);
+
+    /**
+     * @brief Деструктор класса Params_Window
+     */
+    ~Params_Window();
+
+    /**
+     * @brief Получение параметров
+     * @return Список параметров
+     */
+    QStringList Get_Params();
 
 private:
-	Ui:: Params_WindowClass _ui;
-	
-	QStringList Params;
+    Ui::Params_WindowClass _ui; ///< Интерфейс окна
+
+    QStringList Params; ///< Параметры
 
 public slots:
-	void Set_Params();
+    /**
+     * @brief Установка параметров
+     */
+    void Set_Params();
 };
