@@ -92,10 +92,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="B_Parts.cpp" />
+    <ClCompile Include="Door_Sample.cpp" />
+    <ClCompile Include="Stairs_Sample.cpp" />
+    <ClCompile Include="Wall_Sample.cpp" />
+    <ClCompile Include="Window_Sample.cpp" />
     <QtRcc Include="uchebnayapractika.qrc" />
     <QtUic Include="Params_Window.ui" />
     <QtUic Include="uchebnayapractika.ui" />
     <QtMoc Include="uchebnayapractika.h" />
+    <ClCompile Include="Circle_Sample.cpp" />
     <ClCompile Include="Params_Window.cpp" />
     <ClCompile Include="Square_Sample.cpp" />
     <ClCompile Include="System_Item.cpp" />
@@ -110,7 +116,13 @@
     <QtMoc Include="Params_Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Circle_Sample.h" />
+    <ClInclude Include="B_Parts.h" />
+    <ClInclude Include="Door_Sample.h" />
     <ClInclude Include="Square_Sample.h" />
+    <ClInclude Include="Stairs_Sample.h" />
+    <ClInclude Include="Wall_Sample.h" />
+    <ClInclude Include="Window_Sample.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

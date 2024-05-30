@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>931</width>
+    <width>800</width>
     <height>891</height>
    </rect>
   </property>
@@ -172,38 +172,6 @@ border-color: rgb(10, 10, 10);</string>
          <property name="spacing">
           <number>0</number>
          </property>
-         <item row="1" column="1">
-          <widget class="QScrollBar" name="verticalScrollBar">
-           <property name="maximumSize">
-            <size>
-             <width>14</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QScrollBar" name="horizontalScrollBar">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>14</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="Project_Name_Label">
            <property name="styleSheet">
@@ -332,8 +300,8 @@ background-color: rgb(220, 220, 220);</string>
               <property name="spacing">
                <number>0</number>
               </property>
-              <item row="2" column="2">
-               <widget class="QToolButton" name="TRedo_Button">
+              <item row="1" column="0">
+               <widget class="QToolButton" name="TAdd_Button">
                 <property name="minimumSize">
                  <size>
                   <width>70</width>
@@ -354,7 +322,40 @@ background-color: rgb(255, 255, 255);
 </string>
                 </property>
                 <property name="text">
-                 <string>Redo       </string>
+                 <string>Add         </string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QToolButton" name="TMove_Button">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>53</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>70</width>
+                  <height>53</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+color: rgb(10, 10, 10);
+text-align: bottom;
+background-color: rgb(255, 255, 255);
+
+</string>
+                </property>
+                <property name="text">
+                 <string>Move      </string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -412,105 +413,7 @@ background-color: rgb(255, 255, 255);
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QToolButton" name="TMove_Button">
-                <property name="minimumSize">
-                 <size>
-                  <width>70</width>
-                  <height>53</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>53</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-text-align: bottom;
-background-color: rgb(255, 255, 255);
-
-</string>
-                </property>
-                <property name="text">
-                 <string>Move      </string>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QToolButton" name="TUndo_Button">
-                <property name="minimumSize">
-                 <size>
-                  <width>70</width>
-                  <height>53</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>53</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-text-align: bottom;
-background-color: rgb(255, 255, 255);
-
-</string>
-                </property>
-                <property name="text">
-                 <string>Undo       </string>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QToolButton" name="TAdd_Button">
-                <property name="minimumSize">
-                 <size>
-                  <width>70</width>
-                  <height>53</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>53</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-text-align: bottom;
-background-color: rgb(255, 255, 255);
-</string>
-                </property>
-                <property name="text">
-                 <string>Add         </string>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
+              <item row="2" column="2">
                <spacer name="verticalSpacer">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>

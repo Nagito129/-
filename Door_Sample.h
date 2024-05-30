@@ -3,21 +3,19 @@
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QPainter>
-#include <QPaintEvent>
 #include <QGraphicsSceneMouseEvent>
+#include <QCursor>
 
-
-class Square_Sample : public QGraphicsItem
+class Door_Sample :
+    public QGraphicsItem
 {
 public:
-    Square_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle, qreal X, qreal Y);
-    Square_Sample(QString Name, qreal Lenght, qreal Width);
+    Door_Sample(qreal Lenght, qreal Width, qreal Angle);
+    Door_Sample();
 
-    void Set_Workload(QColor Color, qreal Workload);
-
-    bool Spawn_Accept();
     void Set_Mode(int Mode);
     bool Get_Delete_Flag();
+    bool Spawn_Accept();
 
 protected:
     QRectF boundingRect() const override;
@@ -25,29 +23,39 @@ protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent* Event) override;
     void mousePressEvent(QGraphicsSceneMouseEvent* Event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* Event) override;
-    void wheelEvent(QGraphicsSceneWheelEvent* Event) override;
+    void hoverMoveEvent(QGraphicsSceneHoverEvent* Event) override;
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent* Event) override;
 
 private:
     enum Mods {
         OFF = 0,
         MOVE = 1,
-        SPAWN = 2,
-        DELETE = 3
+        SIZE = 2,
+        DELETE = 3,
+        SPAWN = 4
     };
-    
-    Mods Mode = SPAWN;
 
-    QString Name;
-    qreal Lenght,
-        Width,
-        Angle = 0,
-        Workload_Status,
-        X, Y;
-    QColor Color_Status, 
+    enum Edges {
+        NOTHING = 0,
+        TOP = 1,
+        BOT = 2,
+        LEFT = 3,
+        RIGHT = 4,
+    };
+
+    qreal Lenght = 100,
+        Old_Lenght = Lenght,
+        Width = 30,
+        Old_Width = Width,
+        Min_Size = 25;
+    QPointF Return_Position;
+    int Angle = 0;
+    QColor Default_Color,
         Coliding_Color,
         Object_Color;
+    Mods Mode = SPAWN;
+    Edges Edge = NOTHING;
     bool Delete_Flag = false;
-    QPointF Return_Position;
 
     bool Check_Coliding();
     void Set_Obj_Color(QColor Color);

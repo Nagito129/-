@@ -12,6 +12,7 @@
 #include "System_Item.h"
 #include "Square_Sample.h"
 #include "Params_Window.h"
+#include "B_Parts.h"
 
 using namespace std;
 
@@ -28,12 +29,13 @@ protected:
 
 private:
     Ui::uchebnayapractikaClass ui;
+
     
     enum Mods {
         M_OFF = 0,
         M_ADD = 1,
         M_DELETE = 2,
-        M_MOVE = 3
+        M_MOVE = 3,
     };
 
     enum System_Form {
@@ -46,16 +48,20 @@ private:
             Screen_W = Screen_Geometry.width();
     QString File_Name;
     System_Item* Item;
-    Square_Sample* Square;
+    B_Parts* Part;
     QGraphicsScene Plan;
 
     QList <System_Item*> Items;
-    
-    Mods Mod;
+    QList <B_Parts*> Build_Parts;
+
+    Mods Mode;
+    System_Form Form;
+    bool is_Build;
 
     void Console_Widget(bool isKey);
     void Pout(QString String);
     void Add_Sys_Item(QString Path, System_Form Form);
+    void Set_Items_And_Parts_Mode(int Mode);
 
 
 public slots:
@@ -67,10 +73,12 @@ public slots:
     void Delete_All();
     void Add_Square();
     void Add_Circle();
+    void Add_Wall();
+    void Add_Window();
+    void Add_Door();
+    void Add_Stairs();
     void Delete();
     void Move();
-    void Undo();
-    void Redo();
 
     void Open();
     void Save();

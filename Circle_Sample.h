@@ -1,17 +1,16 @@
 #pragma once
-
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QPaintEvent>
 #include <QGraphicsSceneMouseEvent>
 
-
-class Square_Sample : public QGraphicsItem
+class Circle_Sample :
+    public QGraphicsItem
 {
 public:
-    Square_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle, qreal X, qreal Y);
-    Square_Sample(QString Name, qreal Lenght, qreal Width);
+    Circle_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle);
+    Circle_Sample(QString Name, qreal Lenght, qreal Width);
 
     void Set_Workload(QColor Color, qreal Workload);
 
@@ -21,6 +20,7 @@ public:
 
 protected:
     QRectF boundingRect() const override;
+    QPainterPath shape() const override;
     void paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent* Event) override;
     void mousePressEvent(QGraphicsSceneMouseEvent* Event) override;
@@ -34,16 +34,16 @@ private:
         SPAWN = 2,
         DELETE = 3
     };
-    
+
     Mods Mode = SPAWN;
 
     QString Name;
     qreal Lenght,
         Width,
         Angle = 0,
-        Workload_Status,
-        X, Y;
-    QColor Color_Status, 
+        Workload_Status;
+
+    QColor Color_Status,
         Coliding_Color,
         Object_Color;
     bool Delete_Flag = false;
@@ -52,4 +52,3 @@ private:
     bool Check_Coliding();
     void Set_Obj_Color(QColor Color);
 };
-

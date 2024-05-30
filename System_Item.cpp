@@ -15,6 +15,18 @@ System_Item::System_Item(QWidget* parent)
 	connect(sys.Weight_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Weidh()));
 }
 
+System_Item::~System_Item()
+{
+	if (is_Square) {
+		delete Square;
+	}
+	else {
+		delete Circle;
+	}
+}
+
+
+
 void System_Item::Set_Params(QStringList Params, QString Icon)
 {
 	this->Params = Params;
@@ -30,16 +42,45 @@ void System_Item::Set_Params(QStringList Params, QString Icon)
 	sys.X_pos->setText(Params[7]);
 	sys.Y_pos->setText(Params[8]);
 	
-	Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
+	if (is_Square) {
+		Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
+	}
+	else {
+		Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
+	}
 	Set_Workload();
-
-	
-
 }
 
 QStringList System_Item::Get_Params()
 {
 	return Params;
+}
+
+void System_Item::Set_Position(qreal x, qreal y)
+{
+	sys.X_pos->setText(QString::number(x));
+	sys.Y_pos->setText(QString::number(y));
+}
+
+void System_Item::Set_Mode(int Mode)
+{
+	if (is_Square) {
+		Square->Set_Mode(Mode);
+	}
+	else
+	{
+		Circle->Set_Mode(Mode);
+	}
+}
+
+bool System_Item::Get_Delete_Flag()
+{
+	if (is_Square) {
+		return Square->Get_Delete_Flag();
+	}
+	else {
+		return Circle->Get_Delete_Flag();
+	}
 }
 
 void System_Item::Set_Firm()
@@ -65,7 +106,12 @@ void System_Item::Set_Workload()
 	sys.Workload_Bar->setValue(rand() % 101);
 	Workload = sys.Workload_Bar->value();
 	Status_Color();
-	Square->Set_Workload(Color, Workload);
+	if (is_Square) {
+		Square->Set_Workload(Color, Workload);
+	}
+	else {
+		Circle->Set_Workload(Color, Workload);
+	}
 }
 
 void System_Item::Status_Color()

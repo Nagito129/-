@@ -1,18 +1,15 @@
-#include "Square_Sample.h"
+#include "Circle_Sample.h"
 
-Square_Sample::Square_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle, qreal X, qreal Y)
+Circle_Sample::Circle_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle)
 {
 	this->Name = Name;
 	this->Lenght = Lenght;
 	this->Width = Width;
 	this->Angle = Angle;
-	this->X = X;
-	this->Y = Y;
 	Coliding_Color.setRgb(210, 20, 20);
-	Coliding_Color.setAlpha(140);
 }
 
-Square_Sample::Square_Sample(QString Name, qreal Lenght, qreal Width)
+Circle_Sample::Circle_Sample(QString Name, qreal Lenght, qreal Width)
 {
 	this->Name = Name;
 	this->Lenght = Lenght;
@@ -21,17 +18,16 @@ Square_Sample::Square_Sample(QString Name, qreal Lenght, qreal Width)
 	Coliding_Color.setAlpha(140);
 }
 
-
-void Square_Sample::Set_Workload(QColor Color, qreal Workload)
+void Circle_Sample::Set_Workload(QColor Color, qreal Workload)
 {
 	Color_Status = Color;
 	Workload_Status = Workload;
 	Set_Obj_Color(Color_Status);
 }
 
-bool Square_Sample::Spawn_Accept()
+bool Circle_Sample::Spawn_Accept()
 {
-	if (scene()->collidingItems(this).isEmpty()){
+	if (scene()->collidingItems(this).isEmpty()) {
 		Mode = OFF;
 		Color_Status.setAlpha(255);
 		Set_Obj_Color(Color_Status);
@@ -42,7 +38,7 @@ bool Square_Sample::Spawn_Accept()
 	}
 }
 
-void Square_Sample::Set_Mode(int Mode)
+void Circle_Sample::Set_Mode(int Mode)
 {
 	if (Mode == 0) {
 		this->Mode = OFF;
@@ -55,45 +51,53 @@ void Square_Sample::Set_Mode(int Mode)
 	}
 }
 
-bool Square_Sample::Get_Delete_Flag()
+bool Circle_Sample::Get_Delete_Flag()
 {
 	return Delete_Flag;
 }
 
-QRectF Square_Sample::boundingRect() const
+QRectF Circle_Sample::boundingRect() const
 {
-	return QRectF(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	return shape().boundingRect();
 }
 
-void Square_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
+QPainterPath Circle_Sample::shape() const
+{
+	QPainterPath Circle;
+	Circle.addEllipse(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	return Circle;
+}
+
+void Circle_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
 	if (Mode == SPAWN) {
 		Object_Color.setAlpha(140);
 	}
 	Painter->setBrush(Object_Color);
-	Painter->drawRect(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	Painter->drawEllipse(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
 }
 
-void Square_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
-{
+void Circle_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
+{	
 	if (Mode == SPAWN || Mode == MOVE) {
 		this->setPos(mapToScene(Event->pos()));
 		Check_Coliding();
 	}
+
+
 }
 
-void Square_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
+void Circle_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
-	
-	if (Mode == MOVE){
+	if (Mode == MOVE) {
 		this->setZValue(1);
 		Return_Position = this->pos();
 
 		Object_Color.setAlpha(140);
 		update();
 	}
-	
-	if (Mode == DELETE) {
+
+	else if (Mode == DELETE) {
 		if (Delete_Flag == false) {
 			Delete_Flag = true;
 			Object_Color.setRgb(59, 106, 171);
@@ -105,11 +109,10 @@ void Square_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 			this->setScale(1);
 		}
 	}
-
 	Q_UNUSED(Event);
 }
 
-void Square_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
+void Circle_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
 	if (Mode == MOVE) {
 		this->setZValue(0);
@@ -124,7 +127,7 @@ void Square_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 	Q_UNUSED(Event);
 }
 
-void Square_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
+void Circle_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
 {
 	if (Mode == SPAWN || Mode == MOVE) {
 		if (Event->delta() > 0) {
@@ -137,13 +140,13 @@ void Square_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
 	}
 }
 
-void Square_Sample::Set_Obj_Color(QColor Color)
+void Circle_Sample::Set_Obj_Color(QColor Color)
 {
 	Object_Color = Color;
 	update(boundingRect());
 }
 
-bool Square_Sample::Check_Coliding()
+bool Circle_Sample::Check_Coliding()
 {
 	if (scene()->collidingItems(this).isEmpty()) {
 		Color_Status.setAlpha(140);
@@ -156,7 +159,4 @@ bool Square_Sample::Check_Coliding()
 		return true;
 	}
 }
-
-
-
 

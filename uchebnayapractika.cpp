@@ -41,10 +41,6 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
     ui.TDelete_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Delete_Icon.png"));
     ui.TAdd_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     ui.TAdd_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Add_Icon.png"));
-    ui.TUndo_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.TUndo_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Undo_Icon.png"));
-    ui.TRedo_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.TRedo_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Redo_Icon.png"));
     ui.TMove_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     ui.TMove_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Move_Icon.png"));
 
@@ -78,21 +74,25 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
     connect(ui.TAdd_Button, SIGNAL(pressed()), this, SLOT(Add_Widget()));
     connect(ui.TDelete_Button, SIGNAL(pressed()), this, SLOT(Delete()));
     connect(ui.TMove_Button, SIGNAL(pressed()), this, SLOT(Move()));
-    connect(ui.TUndo_Button, SIGNAL(pressed()), this, SLOT(Undo()));
-    connect(ui.TRedo_Button, SIGNAL(pressed()), this, SLOT(Redo()));
 
     connect(ui.Square_Button, SIGNAL(pressed()), this, SLOT(Add_Square()));
     connect(ui.Circle_Button, SIGNAL(pressed()), this, SLOT(Add_Circle()));
+
+    connect(ui.Wall_Button, SIGNAL(pressed()), this, SLOT(Add_Wall()));
+    connect(ui.Window_Button, SIGNAL(pressed()), this, SLOT(Add_Window()));
+    connect(ui.Door_Button, SIGNAL(pressed()), this, SLOT(Add_Door()));
+    connect(ui.Stairs_Button, SIGNAL(pressed()), this, SLOT(Add_Stairs()));
 
     connect(ui.Hide_Button, SIGNAL(pressed()), this, SLOT(Console_Widget()));
 
     ui.Scene->setScene(&Plan);
     ui.Scene->setRenderHint(QPainter::Antialiasing);
+
 }
 
 uchebnayapractika::~uchebnayapractika()
 {
-    
+    Delete_All();
 }
 
 void uchebnayapractika::Info_Widget()
@@ -154,36 +154,88 @@ void uchebnayapractika::Pout(QString String)
     ui.cmd_Scene->append(String);
 }
 
-//tyt bindi propisivaesh ("F1" - занята)
-void uchebnayapractika::keyPressEvent(QKeyEvent* e)
+
+
+
+
+void uchebnayapractika::keyPressEvent(QKeyEvent* e)/////////////////////////////////////////////////////////////////
 {
     if (e->key() == Qt::Key_F1) {
         Console_Widget(true);
     }
-    
+    if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+        if (Mode == M_ADD) {
+            if (is_Build) {
+                if (Build_Parts[Build_Parts.size() - 1]->Spawn_Accept()) {
+                    Mode = M_OFF;
+                    ui.Editor->setDisabled(false);
+                }
+            }
+            else if (Form == SQUARE) {
+                if (Items[Items.size() - 1]->Square->Spawn_Accept()) {
+                    Mode = M_OFF;
+                    ui.Editor->setDisabled(false);
+                    Items[Items.size() - 1]->Set_Position(Items[Items.size() - 1]->Square->x(), Items[Items.size() - 1]->Square->y() * -1);
+                }
+                else {
+                    QMessageBox::warning(this, "Error", "Objects is coliding");
+                }
+            }
+            else if (Form == CIRCLE) {
+                if (Items[Items.size() - 1]->Circle->Spawn_Accept()) {
+                    Mode = M_OFF;
+                    ui.Editor->setDisabled(false);
+                    Items[Items.size() - 1]->Set_Position(Items[Items.size() - 1]->Circle->x(), Items[Items.size() - 1]->Circle->y() * -1);
+                }
+                else {
+                    QMessageBox::warning(this, "Error", "Objects is coliding");
+                }
+            }
+        }
+        if (Mode == M_DELETE) {
+            for (int i = Items.size() - 1; i >= 0; i--) {
+                if (Items[i]->Get_Delete_Flag()) {
+                    delete Items[i];
+                    Items.remove(i);
+                }
+            }
+            for (int i = Build_Parts.size() - 1; i >= 0; i--) {
+                if (Build_Parts[i]->Get_Delete_Flag()) {
+                    delete Build_Parts[i];
+                    Build_Parts.remove(i);
+                }
+            }
+        }
+    }
+    if (e->key() == Qt::Key_Escape && Mode == M_ADD) {
+        if (is_Build) {
+            delete Build_Parts[Build_Parts.size() - 1];
+            Build_Parts.pop_back();
+        }
+        else {
+            delete Items[Items.size() - 1];
+            Items.pop_back();
+        }
+        ui.Editor->setDisabled(false);
+        Mode = M_OFF;
+    }
 }
-//^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-
-//    Информация для мамулечки:
-/*
-Видосы что помогли мне при деланьи курсача:
-https://www.youtube.com/watch?v=cPvRvX4o5Xc (основные приколы со сценой его еще Максим кидал)
-https://www.youtube.com/watch?v=yCLy5Sz7WIA (Управлние предмаетами мышью)
-https://www.youtube.com/watch?v=fmSs2mNGh9I&t=1s (тоже там пару приколов про столкновения рассказывается
-но можешь всю логику с курсача моего взять)
-
-    Функции для биндов тебе придется переопределять, делаешь это в протектеде 
-по примеру что я тебе оставил, а так же в курсаче тоже дохуя примеров например с мышью
-
-            Удачи!!!
-*/
-// === oblast' parta Mamulechki ===
 
 void uchebnayapractika::Delete_All()
 {
-
+    while (!Items.isEmpty())
+    {
+        delete Items[0];
+        Items.pop_front();
+    }
+    while (!Build_Parts.isEmpty())
+    {
+        delete Build_Parts[0];
+        Build_Parts.pop_front();
+    }
+    ui.Editor->setDisabled(false);
 }
 
 void uchebnayapractika::Add_Square()
@@ -196,8 +248,56 @@ void uchebnayapractika::Add_Circle()
     Add_Sys_Item("Circle_Icon.png", CIRCLE);
 }
 
-void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)
+void uchebnayapractika::Add_Wall()
 {
+    is_Build = true;
+    Mode = M_ADD;
+    ui.Editor->setDisabled(this);
+    Part = new B_Parts(1);
+    Plan.addItem(Part->Wall);
+    Part->Wall->setPos(0, 0);
+    Build_Parts.append(Part);
+}
+
+void uchebnayapractika::Add_Window()
+{
+    is_Build = true;
+    Mode = M_ADD;
+    ui.Editor->setDisabled(this);
+    Part = new B_Parts(2);
+    Plan.addItem(Part->Window);
+    Part->Window->setPos(0, 0);
+    Build_Parts.append(Part);
+}
+
+void uchebnayapractika::Add_Door()
+{
+    is_Build = true;
+    Mode = M_ADD;
+    ui.Editor->setDisabled(this);
+    Part = new B_Parts(3);
+    Plan.addItem(Part->Door);
+    Part->Door->setPos(0, 0);
+    Build_Parts.append(Part);
+}
+
+void uchebnayapractika::Add_Stairs()
+{
+    is_Build = true;
+    Mode = M_ADD;
+    ui.Editor->setDisabled(this);
+    Part = new B_Parts(4);
+    Plan.addItem(Part->Stairs);
+    Part->Stairs->setPos(0, 0);
+    Build_Parts.append(Part);
+}
+
+void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)///////////////////////////////////////////////////
+{
+    is_Build = false;
+    Mode = M_ADD;
+    this->Form = Form;
+    ui.Editor->setDisabled(true);
 
     Params_Window Window;
     Window.setModal(1);
@@ -210,6 +310,11 @@ void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)
     }
 
     Item = new System_Item;
+    
+    if (Form == CIRCLE) {
+        Item->is_Square = false;
+    }
+    
     Item->Set_Params(Params, Path);
     ui.verticalLayout_6->addWidget(Item);
     Items.append(Item);
@@ -220,7 +325,18 @@ void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)
     }
 
     else if (Form == CIRCLE) {
+        Plan.addItem(Item->Circle);
+        Item->Circle->setPos(0, 0);
+    }
+}
 
+void uchebnayapractika::Set_Items_And_Parts_Mode(int Mode)
+{
+    for (int i = 0; i < Items.size(); i++) {
+        Items[i]->Set_Mode(Mode);
+    }
+    for (int i = 0; i < Build_Parts.size(); i++) {
+        Build_Parts[i]->Set_Mode(Mode);
     }
 }
 
@@ -229,7 +345,9 @@ void uchebnayapractika::Delete()
     if (!ui.Add_Widget->isHidden()) {
         ui.Add_Widget->hide();
     }
-
+    Mode = M_DELETE;
+    Set_Items_And_Parts_Mode(3);
+    
 }
 
 void uchebnayapractika::Move()
@@ -237,20 +355,9 @@ void uchebnayapractika::Move()
     if (!ui.Add_Widget->isHidden()) {
         ui.Add_Widget->hide();
     }
+    Mode = M_MOVE;
+    Set_Items_And_Parts_Mode(1);
 }
-
-void uchebnayapractika::Undo()
-{
-
-}
-
-void uchebnayapractika::Redo()
-{
-
-}
-
-// Mamulechka^^^^^^^^^^^^^^^^^^^^^^
-
 
 
 // === oblast' parta Maxima ===
