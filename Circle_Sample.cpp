@@ -22,6 +22,7 @@ Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width, qreal Angl
     Coliding_Color.setRgb(210, 20, 20);
     this->setRotation(Angle);
     Mode = OFF;
+    this->setZValue(1);
 }
 
 /**
@@ -38,6 +39,7 @@ Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width)
     this->Width = Width;
     Coliding_Color.setRgb(210, 20, 20);
     Coliding_Color.setAlpha(140);
+    this->setZValue(1);
 }
 
 /**

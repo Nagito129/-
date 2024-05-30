@@ -24,6 +24,7 @@ Wall_Sample::Wall_Sample(qreal Length, qreal Width)
 	Coliding_Color.setRgb(210, 20, 20);
 	Coliding_Color.setAlpha(140);
 	Mode = OFF;
+	this->setZValue(1);
 }
 
 /**

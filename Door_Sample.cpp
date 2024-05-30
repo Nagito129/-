@@ -25,6 +25,7 @@ Door_Sample::Door_Sample(qreal Length, qreal Width)
     Coliding_Color.setRgb(210, 20, 20);
     Coliding_Color.setAlpha(140);
     Mode = OFF;
+    this->setZValue(1);
 }
 
 /**
@@ -40,6 +41,7 @@ Door_Sample::Door_Sample()
     Default_Color.setAlpha(140);
     Coliding_Color.setRgb(210, 20, 20);
     Coliding_Color.setAlpha(140);
+    this->setZValue(1);
 }
 
 /**

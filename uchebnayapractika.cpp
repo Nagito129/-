@@ -416,7 +416,6 @@ void uchebnayapractika::Move()
  */
 void uchebnayapractika::Open()
 {
-    Delete_All();
     File_Name = QFileDialog::getOpenFileName(this, "Open a file", "Projects/", "(*.xml)");
     QFile File(File_Name);
 
@@ -424,6 +423,9 @@ void uchebnayapractika::Open()
         QMessageBox::warning(this, "Error", "File not open\n" + File.errorString());
         return;
     }
+
+    Delete_All();
+
     ui.Project_Name_Label->setText(File_Name);
     QXmlStreamReader Xml;
     Xml.setDevice(&File);
