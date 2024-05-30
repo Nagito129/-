@@ -228,27 +228,6 @@ background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="Height_Edit">
-        <property name="minimumSize">
-         <size>
-          <width>220</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-background-color: rgb(255, 255, 255);</string>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="Width">
         <property name="minimumSize">
@@ -273,29 +252,8 @@ background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="Width_Edit">
-        <property name="minimumSize">
-         <size>
-          <width>220</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-background-color: rgb(255, 255, 255);</string>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="Lenght">
+       <widget class="QLabel" name="Length">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -314,33 +272,12 @@ color: rgb(10, 10, 10);
 background-color: rgb(220, 220, 220);</string>
         </property>
         <property name="text">
-         <string>Lenght</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="Lenght_Edit">
-        <property name="minimumSize">
-         <size>
-          <width>220</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-background-color: rgb(255, 255, 255);</string>
+         <string>Length</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="Volume">
+       <widget class="QLabel" name="Weight">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -439,6 +376,42 @@ background-color: rgb(220, 220, 220);</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="Height_L">
+        <property name="styleSheet">
+         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+color: rgb(10, 10, 10);
+background-color: rgb(220, 220, 220);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="Width_L">
+        <property name="styleSheet">
+         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+color: rgb(10, 10, 10);
+background-color: rgb(220, 220, 220);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="Length_L">
+        <property name="styleSheet">
+         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+color: rgb(10, 10, 10);
+background-color: rgb(220, 220, 220);</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>

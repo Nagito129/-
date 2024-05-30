@@ -7,22 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>250</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>300</width>
-    <height>250</height>
+    <height>200</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Params_Window</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border: 2px solid;
-border-color: rgb(10, 10, 10);
-background-color: rgb(143, 143, 143)
+   <string notr="true">
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -46,13 +44,13 @@ background-color: rgb(143, 143, 143)
      <property name="minimumSize">
       <size>
        <width>300</width>
-       <height>225</height>
+       <height>175</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>300</width>
-       <height>225</height>
+       <height>175</height>
       </size>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -91,7 +89,9 @@ background-color: rgb(143, 143, 143)
         <property name="styleSheet">
          <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
-background-color: rgb(220, 220, 220);</string>
+background-color: rgb(220, 220, 220);
+border: 2px solid;
+border-color: rgb(10, 10, 10);</string>
         </property>
         <property name="text">
          <string>Name</string>
@@ -113,7 +113,9 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
         </property>
@@ -136,7 +138,9 @@ background-color: rgb(255, 255, 255);</string>
         <property name="styleSheet">
          <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
-background-color: rgb(220, 220, 220);</string>
+background-color: rgb(220, 220, 220);
+border: 2px solid;
+border-color: rgb(10, 10, 10);</string>
         </property>
         <property name="text">
          <string>Firm</string>
@@ -158,7 +162,9 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
         </property>
@@ -181,7 +187,10 @@ background-color: rgb(255, 255, 255);</string>
         <property name="styleSheet">
          <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
-background-color: rgb(220, 220, 220);</string>
+background-color: rgb(220, 220, 220);
+border: 2px solid;
+border-color: rgb(10, 10, 10);
+</string>
         </property>
         <property name="text">
          <string>Seria</string>
@@ -203,7 +212,9 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
         </property>
@@ -224,7 +235,9 @@ background-color: rgb(255, 255, 255);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(220, 220, 220);</string>
         </property>
@@ -248,7 +261,9 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
         </property>
@@ -269,7 +284,9 @@ background-color: rgb(255, 255, 255);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(220, 220, 220);</string>
         </property>
@@ -293,14 +310,16 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="Lenght">
+       <widget class="QLabel" name="Length">
         <property name="minimumSize">
          <size>
           <width>80</width>
@@ -314,17 +333,19 @@ background-color: rgb(255, 255, 255);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(220, 220, 220);</string>
         </property>
         <property name="text">
-         <string>Lenght</string>
+         <string>Length</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="Lenght_Edit">
+       <widget class="QLineEdit" name="Length_Edit">
         <property name="minimumSize">
          <size>
           <width>220</width>
@@ -338,7 +359,9 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
         </property>
@@ -359,7 +382,9 @@ background-color: rgb(255, 255, 255);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 12pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 12pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(220, 220, 220);</string>
         </property>
@@ -383,97 +408,11 @@ background-color: rgb(220, 220, 220);</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+         <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 background-color: rgb(255, 255, 255);</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="X">
-        <property name="minimumSize">
-         <size>
-          <width>80</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI Black</family>
-          <pointsize>10</pointsize>
-          <italic>false</italic>
-          <fontweight>Black</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-background-color: rgb(220, 220, 220);</string>
-        </property>
-        <property name="text">
-         <string>X position</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLineEdit" name="X_Edit">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI Black</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="Y">
-        <property name="minimumSize">
-         <size>
-          <width>80</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
-color: rgb(10, 10, 10);
-background-color: rgb(220, 220, 220);</string>
-        </property>
-        <property name="text">
-         <string>Y position</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QLineEdit" name="Y_Edit">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI Black</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>0</string>
         </property>
        </widget>
       </item>
@@ -501,7 +440,9 @@ background-color: rgb(220, 220, 220);</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;
+      <string notr="true">border: 2px solid;
+border-color: rgb(10, 10, 10);
+font: 900 10pt &quot;Segoe UI Black&quot;;
 color: rgb(10, 10, 10);
 
 background-color: rgb(255, 255, 255);</string>
