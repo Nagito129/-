@@ -10,14 +10,15 @@
 class Square_Sample : public QGraphicsItem
 {
 public:
-    Square_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle, qreal X, qreal Y);
-    Square_Sample(QString Name, qreal Lenght, qreal Width);
+    Square_Sample(QString Name, qreal Length, qreal Width, qreal Angle);
+    Square_Sample(QString Name, qreal Length, qreal Width);
 
     void Set_Workload(QColor Color, qreal Workload);
 
     bool Spawn_Accept();
     void Set_Mode(int Mode);
     bool Get_Delete_Flag();
+    int Get_Angle();
 
 protected:
     QRectF boundingRect() const override;
@@ -38,11 +39,11 @@ private:
     Mods Mode = SPAWN;
 
     QString Name;
-    qreal Lenght,
+    qreal Length,
         Width,
         Angle = 0,
-        Workload_Status,
-        X, Y;
+        Workload_Status;
+
     QColor Color_Status, 
         Coliding_Color,
         Object_Color;

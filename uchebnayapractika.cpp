@@ -1,11 +1,4 @@
 
-//Общая инфа
-/*
-    Как пользоваться консолью;
-    == F1 - открыть закрыть (так же если хотите можете на крестик ее закрыть)
-    == При закрытии консоль не очищается
-    == Что бы вывести ваш текст в консоль юзайте функцию "Pout(QString)"
-*/
 
 #include <QKeyEvent>
 
@@ -359,11 +352,9 @@ void uchebnayapractika::Move()
     Set_Items_And_Parts_Mode(1);
 }
 
-
-// === oblast' parta Maxima ===
-
 void uchebnayapractika::Open()
 {
+    Delete_All();
     File_Name = QFileDialog::getOpenFileName(this, "Open a file", "Projects/", "(*.xml)");
     QFile File(File_Name);
 
@@ -371,13 +362,206 @@ void uchebnayapractika::Open()
         QMessageBox::warning(this, "Error", "File not open\n" + File.errorString());
         return;
     }
+    ui.Project_Name_Label->setText(File_Name);
+    QXmlStreamReader Xml;
+    Xml.setDevice(&File);
+    Xml.readNext();
+    QStringList Params;
+    QString Type;
+    int Angle;
+    while (!Xml.atEnd()) {
+        Params.clear();
+        if (Xml.isStartElement()) {
+            if (Xml.name().toString() == "Wall") {
+                Params.append("1");
+                foreach(const QXmlStreamAttribute & attr, Xml.attributes()) {
+                    Params.append(attr.value().toString());
+                }
+                Part = new B_Parts(Params);
+                Plan.addItem(Part->Wall);
+                Part->Wall->setPos(Params[1].toInt(), Params[2].toInt());
+                Build_Parts.append(Part);
+            }
+            else if (Xml.name().toString() == "Window") {
+                Params.append("2");
+                foreach(const QXmlStreamAttribute & attr, Xml.attributes()) {
+                    Params.append(attr.value().toString());
+                }
+                Part = new B_Parts(Params);
+                Plan.addItem(Part->Window);
+                Part->Window->setPos(Params[1].toInt(), Params[2].toInt());
+                Build_Parts.append(Part);
+            }
+            else if (Xml.name().toString() == "Door") {
+                Params.append("3");
+                foreach(const QXmlStreamAttribute & attr, Xml.attributes()) {
+                    Params.append(attr.value().toString());
+                }
+                Part = new B_Parts(Params);
+                Plan.addItem(Part->Door);
+                Part->Door->setPos(Params[1].toInt(), Params[2].toInt());
+                Build_Parts.append(Part);
+            }
+            else if (Xml.name().toString() == "Stairs") {
+                Params.append("4");
+                foreach(const QXmlStreamAttribute & attr, Xml.attributes()) {
+                    Params.append(attr.value().toString());
+                }
+                Part = new B_Parts(Params);
+                Plan.addItem(Part->Stairs);
+                Part->Stairs->setPos(Params[1].toInt(), Params[2].toInt());
+                Build_Parts.append(Part);
+            }
+            else if (Xml.name().toString() == "Item") {
+                foreach(const QXmlStreamAttribute & attr, Xml.attributes()) {
+                    if (attr.name().toString() == "type")
+                        Type = attr.value().toString();
+                    else if (attr.name().toString() == "angle")
+                        Angle = attr.value().toInt();
+                    else
+                        Params.append(attr.value().toString());
+                }
+                Item = new System_Item;
+                QString Path;
+                if (Type.toInt() == CIRCLE) {
+                    Item->is_Square = false;
+                    Path = "Circle_Icon.png";
+                }
+                else if (Type.toInt() == SQUARE) {
+                    Item->is_Square = true;
+                    Path = "Square_Icon.png";
+                }
+                Item->Set_Params(Params, Path, Angle);
+                ui.verticalLayout_6->addWidget(Item);
+                Items.append(Item);
+                if (Type.toInt() == SQUARE) {
+                    Plan.addItem(Item->Square);
+                    Item->Square->setPos(Params[7].toInt(), Params[8].toInt());
+                }
 
-
+                else if (Type.toInt() == CIRCLE) {
+                    Plan.addItem(Item->Circle);
+                    Item->Circle->setPos(Params[7].toInt(), Params[8].toInt());
+                }
+            }
+        }
+        Xml.readNext();
+    }
+    File.close();
 }
 
 void uchebnayapractika::Save()
 {
-    
+    if (Items.isEmpty() && Build_Parts.isEmpty()) {
+        QMessageBox::warning(this, "Error", "Scene empty");
+        return;
+    }
+
+    if (File_Name.isEmpty()) {
+        File_Name = QFileDialog::getSaveFileName(this, "Save file", "C\\", "XML File (*.xml)");
+        QFile File(File_Name);
+        if (!File.open(QFile::WriteOnly | QFile::Text)) {
+            QMessageBox::warning(this, "Error", "File not open\n" + File.errorString());
+            return;
+        }
+        Write_In_File(File);
+        File.close();
+    }
+
+    else{
+        QMessageBox::StandardButton Choice;
+        Choice = QMessageBox::question(this, "Save", "Save to the current file?", QMessageBox::Yes | QMessageBox::No);
+
+        if (Choice == QMessageBox::Yes) {
+            QFile File(File_Name);
+
+            if (!File.open(QFile::WriteOnly | QFile::Text)) {
+                QMessageBox::warning(this, "Error", "File not open\n" + File.errorString());
+                return;
+            }
+
+            Write_In_File(File);
+            File.close();
+        }
+
+        else {
+            File_Name = QFileDialog::getSaveFileName(this, "Save file", "C\\", "XML File (*.xml)");
+            QFile File(File_Name);
+
+            if (!File.open(QFile::WriteOnly | QFile::Text)) {
+                QMessageBox::warning(this, "Error", "File not open\n" + File.errorString());
+                return;
+            }
+
+            Write_In_File(File);
+            File.close();
+        }
+    }
+
+    QMessageBox::information(this, "Progress", "The room is saved!\n Path: " + File_Name);
 }
 
-// Max ^^^^^^^^^^^^^^^^^^^^^^^^^
+void uchebnayapractika::Write_In_File(QFile& File) {
+    QXmlStreamWriter Xml(&File);
+    Xml.setAutoFormatting(true);
+    Xml.writeStartDocument();
+    Xml.writeStartElement("Items");
+    if (!Build_Parts.isEmpty()) {
+        for (int i = 0; i < Build_Parts.size(); i++) {
+            switch (Build_Parts[i]->Get_Part()) {
+            case 1:
+                Xml.writeStartElement("Wall");
+                Xml.writeAttribute("x", QString().number(Build_Parts[i]->Wall->x()));
+                Xml.writeAttribute("y", QString().number(Build_Parts[i]->Wall->y()));
+                Xml.writeAttribute("Length", QString().number(Build_Parts[i]->Wall->Get_Length()));
+                Xml.writeAttribute("Width", QString().number(Build_Parts[i]->Wall->Get_Width()));
+                Xml.writeEndElement();
+                break;
+            case 2:
+                Xml.writeStartElement("Window");
+                Xml.writeAttribute("x", QString().number(Build_Parts[i]->Window->x()));
+                Xml.writeAttribute("y", QString().number(Build_Parts[i]->Window->y()));
+                Xml.writeAttribute("Length", QString().number(Build_Parts[i]->Window->Get_Length()));
+                Xml.writeAttribute("Width", QString().number(Build_Parts[i]->Window->Get_Width()));
+                Xml.writeEndElement();
+                break;
+            case 3:
+                Xml.writeStartElement("Door");
+                Xml.writeAttribute("x", QString().number(Build_Parts[i]->Door->x()));
+                Xml.writeAttribute("y", QString().number(Build_Parts[i]->Door->y()));
+                Xml.writeAttribute("Length", QString().number(Build_Parts[i]->Door->Get_Length()));
+                Xml.writeAttribute("Width", QString().number(Build_Parts[i]->Door->Get_Width()));
+                Xml.writeEndElement();
+                break;
+            case 4:
+                Xml.writeStartElement("Stairs");
+                Xml.writeAttribute("x", QString().number(Build_Parts[i]->Stairs->x()));
+                Xml.writeAttribute("y", QString().number(Build_Parts[i]->Stairs->y()));
+                Xml.writeAttribute("Length", QString().number(Build_Parts[i]->Stairs->Get_Length()));
+                Xml.writeAttribute("Width", QString().number(Build_Parts[i]->Stairs->Get_Width()));
+                Xml.writeEndElement();
+                break;
+            }
+        }
+    }
+    if (!Items.isEmpty()) {
+        for (int i = 0; i < Items.size(); i++) {
+            Xml.writeStartElement("Item");
+            QStringList Params = Items[i]->Get_Params();
+            Xml.writeAttribute("type", Items[i]->is_Square ? "0" : "1");
+            Xml.writeAttribute("name", Params[0]);
+            Xml.writeAttribute("firm", Params[1]);
+            Xml.writeAttribute("series", Params[2]);
+            Xml.writeAttribute("height", Params[3]);
+            Xml.writeAttribute("width", Params[4]);
+            Xml.writeAttribute("length", Params[5]);
+            Xml.writeAttribute("weight", Params[6]);
+            Xml.writeAttribute("x", Items[i]->is_Square ? QString().number(Items[i]->Square->x()) : QString().number(Items[i]->Circle->x()));
+            Xml.writeAttribute("y", Items[i]->is_Square ? QString().number(Items[i]->Square->y()) : QString().number(Items[i]->Circle->y()));
+            Xml.writeAttribute("angle", Items[i]->is_Square ? QString().number(Items[i]->Square->Get_Angle()) : QString().number(Items[i]->Circle->Get_Angle()));
+            Xml.writeEndElement();
+        }
+    }
+    Xml.writeEndElement();
+    Xml.writeEndDocument();
+}

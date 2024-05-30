@@ -9,6 +9,7 @@ class B_Parts
 {
 public:
     B_Parts(int Part);
+    B_Parts(QStringList Params);
     ~B_Parts();
 
     void Set_Mode(int Mode);
@@ -18,6 +19,7 @@ public:
     Window_Sample* Window;
     Door_Sample* Door;
     Stairs_Sample* Stairs;
+    int Get_Part();
 
 private:
     enum Build_Parts {

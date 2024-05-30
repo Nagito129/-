@@ -1,12 +1,11 @@
 #include "Door_Sample.h"
 
-Door_Sample::Door_Sample(qreal Lenght, qreal Width, qreal Angle)
+Door_Sample::Door_Sample(qreal Length, qreal Width)
 {
-	this->Lenght = Lenght;
+	this->Length = Length;
 	this->Width = Width;
-	this->Angle = Angle;
 	Old_Width = Width;
-	Old_Lenght = Lenght;
+	Old_Length = Length;
 
 	setAcceptHoverEvents(true);
 
@@ -15,6 +14,7 @@ Door_Sample::Door_Sample(qreal Lenght, qreal Width, qreal Angle)
 	Default_Color.setAlpha(140);
 	Coliding_Color.setRgb(210, 20, 20);
 	Coliding_Color.setAlpha(140);
+	Mode = OFF;
 }
 
 Door_Sample::Door_Sample()
@@ -62,15 +62,15 @@ bool Door_Sample::Spawn_Accept()
 
 QRectF Door_Sample::boundingRect() const
 {
-	return QRectF(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	return QRectF(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
 void Door_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
 	Painter->setBrush(Object_Color);
-	Painter->drawRect(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
-	Painter->drawLine(-Lenght / 2, 0 - Width / 2, Lenght / 2, Width / 2);
-	Painter->drawLine(Lenght / 2, 0 - Width / 2, -Lenght / 2, Width / 2);
+	Painter->drawRect(0 - Length / 2, 0 - Width / 2, Length, Width);
+	Painter->drawLine(-Length / 2, 0 - Width / 2, Length / 2, Width / 2);
+	Painter->drawLine(Length / 2, 0 - Width / 2, -Length / 2, Width / 2);
 }
 
 void Door_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
@@ -92,13 +92,13 @@ void Door_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 
 		if (Edge == LEFT || Edge == RIGHT) {
 			prepareGeometryChange();
-			Lenght = (qAbs(Event->pos().x())) * 2;
+			Length = (qAbs(Event->pos().x())) * 2;
 
 			if (Edge == LEFT) {
-				this->setPos((Lenght - Old_Lenght) / 2, this->pos().y());
+				this->setPos((Length - Old_Length) / 2, this->pos().y());
 			}
 			else if (Edge == RIGHT) {
-				this->setPos(-(Lenght - Old_Lenght) / 2, this->pos().y());
+				this->setPos(-(Length - Old_Length) / 2, this->pos().y());
 			}
 
 			Check_Coliding();
@@ -142,13 +142,13 @@ void Door_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 
 		if (Check_Coliding() && Mode == SIZE) {
 			Width = Old_Width;
-			Lenght = Old_Lenght;
+			Length = Old_Length;
 			this->setPos(Return_Position);
 		}
 
 		else {
-			if (Old_Lenght != Lenght) {
-				Old_Lenght = Lenght;
+			if (Old_Length != Length) {
+				Old_Length = Length;
 			}
 			if (Old_Width != Width) {
 				Old_Width = Width;
@@ -157,9 +157,9 @@ void Door_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 				Width = Min_Size;
 				Old_Width = Width;
 			}
-			if (Lenght < Min_Size) {
-				Lenght = Min_Size;
-				Old_Lenght = Width;
+			if (Length < Min_Size) {
+				Length = Min_Size;
+				Old_Length = Width;
 			}
 		}
 
@@ -175,7 +175,7 @@ void Door_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 void Door_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 {
 	if (Mode == MOVE || Mode == SIZE || Mode == SPAWN) {
-		if (Event->pos().x() > Lenght / 2 - 3 && Event->pos().x() < Lenght / 2 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
+		if (Event->pos().x() > Length / 2 - 3 && Event->pos().x() < Length / 2 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
 			Edge = LEFT;
 			if (Mode == MOVE) {
 				Mode = SIZE;
@@ -183,7 +183,7 @@ void Door_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 			this->setCursor(QCursor(Qt::SizeHorCursor));
 		}
 
-		else if (Event->pos().x() > -Lenght / 2 && Event->pos().x() < -Lenght / 2 + 3 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
+		else if (Event->pos().x() > -Length / 2 && Event->pos().x() < -Length / 2 + 3 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
 			Edge = RIGHT;
 			if (Mode == MOVE) {
 				Mode = SIZE;
@@ -191,7 +191,7 @@ void Door_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 			this->setCursor(QCursor(Qt::SizeHorCursor));
 		}
 
-		else if (Event->pos().y() < -Width / 2 + 3 && Event->pos().y() > -Width / 2 && Event->pos().x() < Lenght / 2 - 3 && Event->pos().x() > -Lenght / 2 + 3) {
+		else if (Event->pos().y() < -Width / 2 + 3 && Event->pos().y() > -Width / 2 && Event->pos().x() < Length / 2 - 3 && Event->pos().x() > -Length / 2 + 3) {
 			Edge = TOP;
 			if (Mode == MOVE) {
 				Mode = SIZE;
@@ -199,7 +199,7 @@ void Door_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 			this->setCursor(QCursor(Qt::SizeVerCursor));
 		}
 
-		else if (Event->pos().y() < Width / 2 && Event->pos().y() > Width / 2 - 3 && Event->pos().x() < Lenght / 2 - 3 && Event->pos().x() > -Lenght / 2 + 3) {
+		else if (Event->pos().y() < Width / 2 && Event->pos().y() > Width / 2 - 3 && Event->pos().x() < Length / 2 - 3 && Event->pos().x() > -Length / 2 + 3) {
 			Edge = BOT;
 			if (Mode == MOVE) {
 				Mode = SIZE;
@@ -244,4 +244,12 @@ void Door_Sample::Set_Obj_Color(QColor Color)
 {
 	Object_Color = Color;
 	update();
+}
+
+int Door_Sample::Get_Length() {
+	return Length;
+}
+
+int Door_Sample::Get_Width() {
+	return Width;
 }

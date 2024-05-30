@@ -9,14 +9,15 @@ class Circle_Sample :
     public QGraphicsItem
 {
 public:
-    Circle_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle);
-    Circle_Sample(QString Name, qreal Lenght, qreal Width);
+    Circle_Sample(QString Name, qreal Length, qreal Width, qreal Angle);
+    Circle_Sample(QString Name, qreal Length, qreal Width);
 
     void Set_Workload(QColor Color, qreal Workload);
 
     bool Spawn_Accept();
     void Set_Mode(int Mode);
     bool Get_Delete_Flag();
+    int Get_Angle();
 
 protected:
     QRectF boundingRect() const override;
@@ -38,7 +39,7 @@ private:
     Mods Mode = SPAWN;
 
     QString Name;
-    qreal Lenght,
+    qreal Length,
         Width,
         Angle = 0,
         Workload_Status;

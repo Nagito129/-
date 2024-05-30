@@ -22,6 +22,28 @@ B_Parts::B_Parts(int Part)
 	}
 }
 
+B_Parts::B_Parts(QStringList Params) {
+	int Part = Params[0].toInt();
+	if (Part == WALL) {
+		this->Part = WALL;
+		Wall = new Wall_Sample(Params[3].toInt(), Params[4].toInt());
+	}
+	else if (Part == WINDOW) {
+		this->Part = WINDOW;
+		Window = new Window_Sample(Params[3].toInt(), Params[4].toInt());
+
+	}
+	else if (Part == DOOR) {
+		this->Part = DOOR;
+		Door = new Door_Sample(Params[3].toInt(), Params[4].toInt());
+
+	}
+	else if (Part == STAIRS) {
+		this->Part = STAIRS;
+		Stairs = new Stairs_Sample(Params[3].toInt(), Params[4].toInt());
+	}
+}
+
 B_Parts::~B_Parts()
 {
 	if (Part == WALL) {
@@ -84,4 +106,8 @@ bool B_Parts::Spawn_Accept()
 	else if (Part == STAIRS) {
 		return Stairs->Spawn_Accept();
 	}
+}
+
+int B_Parts::Get_Part() {
+	return Part;
 }

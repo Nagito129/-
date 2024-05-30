@@ -1,18 +1,20 @@
 #include "Circle_Sample.h"
 
-Circle_Sample::Circle_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle)
+Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width, qreal Angle)
 {
 	this->Name = Name;
-	this->Lenght = Lenght;
+	this->Length = Length;
 	this->Width = Width;
 	this->Angle = Angle;
 	Coliding_Color.setRgb(210, 20, 20);
+	this->setRotation(Angle);
+	Mode = OFF;
 }
 
-Circle_Sample::Circle_Sample(QString Name, qreal Lenght, qreal Width)
+Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width)
 {
 	this->Name = Name;
-	this->Lenght = Lenght;
+	this->Length = Length;
 	this->Width = Width;
 	Coliding_Color.setRgb(210, 20, 20);
 	Coliding_Color.setAlpha(140);
@@ -64,7 +66,7 @@ QRectF Circle_Sample::boundingRect() const
 QPainterPath Circle_Sample::shape() const
 {
 	QPainterPath Circle;
-	Circle.addEllipse(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	Circle.addEllipse(0 - Length / 2, 0 - Width / 2, Length, Width);
 	return Circle;
 }
 
@@ -74,7 +76,7 @@ void Circle_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Opt
 		Object_Color.setAlpha(140);
 	}
 	Painter->setBrush(Object_Color);
-	Painter->drawEllipse(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	Painter->drawEllipse(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
 void Circle_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
@@ -160,3 +162,6 @@ bool Circle_Sample::Check_Coliding()
 	}
 }
 
+int Circle_Sample::Get_Angle() {
+	return Angle;
+}

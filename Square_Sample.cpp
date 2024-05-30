@@ -1,21 +1,21 @@
 #include "Square_Sample.h"
 
-Square_Sample::Square_Sample(QString Name, qreal Lenght, qreal Width, qreal Angle, qreal X, qreal Y)
+Square_Sample::Square_Sample(QString Name, qreal Length, qreal Width, qreal Angle)
 {
 	this->Name = Name;
-	this->Lenght = Lenght;
+	this->Length = Length;
 	this->Width = Width;
 	this->Angle = Angle;
-	this->X = X;
-	this->Y = Y;
 	Coliding_Color.setRgb(210, 20, 20);
 	Coliding_Color.setAlpha(140);
+	this->setRotation(Angle);
+	Mode = OFF;
 }
 
-Square_Sample::Square_Sample(QString Name, qreal Lenght, qreal Width)
+Square_Sample::Square_Sample(QString Name, qreal Length, qreal Width)
 {
 	this->Name = Name;
-	this->Lenght = Lenght;
+	this->Length = Length;
 	this->Width = Width;
 	Coliding_Color.setRgb(210, 20, 20);
 	Coliding_Color.setAlpha(140);
@@ -62,7 +62,7 @@ bool Square_Sample::Get_Delete_Flag()
 
 QRectF Square_Sample::boundingRect() const
 {
-	return QRectF(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	return QRectF(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
 void Square_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
@@ -71,7 +71,7 @@ void Square_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Opt
 		Object_Color.setAlpha(140);
 	}
 	Painter->setBrush(Object_Color);
-	Painter->drawRect(0 - Lenght / 2, 0 - Width / 2, Lenght, Width);
+	Painter->drawRect(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
 void Square_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
@@ -157,6 +157,8 @@ bool Square_Sample::Check_Coliding()
 	}
 }
 
-
+int Square_Sample::Get_Angle() {
+	return Angle;
+}
 
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+    <Door x="-28" y="638" Length="100" Width="30"/>
+    <Wall x="72" y="640" Length="100" Width="50"/>
+    <Wall x="-128" y="639" Length="100" Width="50"/>
+    <Window x="173" y="638" Length="100" Width="30"/>
+    <Wall x="519" y="638" Length="592" Width="50"/>
+    <Wall x="-202" y="317" Length="46" Width="694"/>
+    <Wall x="844" y="313" Length="56" Width="700"/>
+    <Wall x="303" y="-56" Length="1024" Width="50"/>
+    <Wall x="843" y="-60" Length="54" Width="44"/>
+    <Door x="370" y="275" Length="34" Width="118"/>
+    <Wall x="369" y="92" Length="50" Width="246"/>
+    <Wall x="370" y="474" Length="44" Width="276"/>
+    <Stairs x="762" y="285" Length="100" Width="50"/>
+    <Item type="0" name="Сервер 1" firm="Sosung" series="12345" height="150" width="150" length="150" weight="150" x="-103" y="46" angle="0"/>
+    <Item type="1" name="Компьютер 1" firm="Sosung" series="23456" height="50" width="50" length="100" weight="50" x="188" y="53" angle="0"/>
+    <Item type="1" name="Компьютер 2" firm="Sosung" series="34567" height="50" width="50" length="100" weight="50" x="588" y="57" angle="0"/>
+    <Item type="0" name="Ксерокс" firm="Sosung" series="345678" height="100" width="100" length="100" weight="100" x="744" y="45" angle="-45"/>
+    <Item type="0" name="Сервер 2" firm="Sosung" series="13568" height="300" width="300" length="300" weight="300" x="664" y="462" angle="0"/>
+</Items>

@@ -14,8 +14,8 @@ public:
 	~System_Item();
 	
 	void Set_Params(QStringList Params, QString Icon);
+	void Set_Params(QStringList Params, QString Icon, int Angle);
 
-	QStringList Params;
 	QStringList Get_Params();
 	void Set_Position(qreal x, qreal y);
 	void Set_Mode(int Mode);
@@ -28,6 +28,7 @@ public:
 	Square_Sample* Square;
 	Circle_Sample* Circle;
 private:
+	QStringList Params;
 	Ui::Sistem_Item sys;
 	void Status_Color();
 	void Set_Workload();

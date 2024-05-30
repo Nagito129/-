@@ -37,7 +37,7 @@ void System_Item::Set_Params(QStringList Params, QString Icon)
 	sys.Seria_Edit->setText(Params[2]);
 	sys.Height_L->setText(Params[3]);
 	sys.Width_L->setText(Params[4]);
-	sys.Lenght_L->setText(Params[5]);
+	sys.Length_L->setText(Params[5]);
 	sys.Weight_Edit->setText(Params[6]);
 	sys.X_pos->setText(Params[7]);
 	sys.Y_pos->setText(Params[8]);
@@ -47,6 +47,30 @@ void System_Item::Set_Params(QStringList Params, QString Icon)
 	}
 	else {
 		Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
+	}
+	Set_Workload();
+}
+
+void System_Item::Set_Params(QStringList Params, QString Icon, int Angle)
+{
+	this->Params = Params;
+	sys.Item_Name->setText(Params[0]);
+	sys.Item_Name->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+	sys.Item_Name->setIcon(QIcon("Textures/Icons/Tools Icons/" + Icon));
+	sys.Firm_Edit->setText(Params[1]);
+	sys.Seria_Edit->setText(Params[2]);
+	sys.Height_L->setText(Params[3]);
+	sys.Width_L->setText(Params[4]);
+	sys.Length_L->setText(Params[5]);
+	sys.Weight_Edit->setText(Params[6]);
+	sys.X_pos->setText(Params[7]);
+	sys.Y_pos->setText(Params[8]);
+
+	if (is_Square) {
+		Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat(), Angle);
+	}
+	else {
+		Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat(), Angle);
 	}
 	Set_Workload();
 }

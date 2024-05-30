@@ -10,12 +10,14 @@ class Stairs_Sample :
     public QGraphicsItem
 {
 public:
-    Stairs_Sample(qreal Lenght, qreal Width, qreal Angle);
+    Stairs_Sample(qreal Length, qreal Width);
     Stairs_Sample();
 
     void Set_Mode(int Mode);
     bool Get_Delete_Flag();
     bool Spawn_Accept();
+    int Get_Length();
+    int Get_Width();
 
 protected:
     QRectF boundingRect() const override;
@@ -43,13 +45,12 @@ private:
         RIGHT = 4,
     };
 
-    qreal Lenght = 100,
-        Old_Lenght = Lenght,
+    qreal Length = 100,
+        Old_Length = Length,
         Width = 50,
         Old_Width = Width,
         Min_Size = 25;
     QPointF Return_Position;
-    int Angle = 0;
     QColor Default_Color,
         Coliding_Color,
         Object_Color;

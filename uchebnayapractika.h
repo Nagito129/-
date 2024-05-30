@@ -5,6 +5,9 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QAbstractButton>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
+#include <QXmlStreamAttribute>
 
 
 
@@ -46,7 +49,7 @@ private:
     const QRectF Screen_Geometry = geometry();
     const qreal Screen_H = Screen_Geometry.height(),
             Screen_W = Screen_Geometry.width();
-    QString File_Name;
+    QString File_Name = "";
     System_Item* Item;
     B_Parts* Part;
     QGraphicsScene Plan;
@@ -62,7 +65,7 @@ private:
     void Pout(QString String);
     void Add_Sys_Item(QString Path, System_Form Form);
     void Set_Items_And_Parts_Mode(int Mode);
-
+    void Write_In_File(QFile &File);
 
 public slots:
     void Console_Widget();

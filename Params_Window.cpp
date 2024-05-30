@@ -12,7 +12,7 @@ Params_Window::Params_Window(QWidget *parent)
 	
 	_ui.Height_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
 	_ui.Width_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
-	_ui.Lenght_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
+	_ui.Length_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
 	
 	connect(_ui.Next_Button, SIGNAL(pressed()), this, SLOT(Set_Params()));
 }
@@ -29,13 +29,13 @@ QStringList Params_Window::Get_Params()
 }
 
 void Params_Window::Set_Params(){
-	if (_ui.Height_Edit->text() != "" && _ui.Width_Edit->text() != "" && _ui.Lenght_Edit->text() != "") {
+	if (_ui.Height_Edit->text() != "" && _ui.Width_Edit->text() != "" && _ui.Length_Edit->text() != "") {
 		Params.append(_ui.Name_Edit->text());
 		Params.append(_ui.Firm_Edit->text());
 		Params.append(_ui.Seria_Edit->text());
 		Params.append(_ui.Height_Edit->text());
 		Params.append(_ui.Width_Edit->text());
-		Params.append(_ui.Lenght_Edit->text());
+		Params.append(_ui.Length_Edit->text());
 		Params.append(_ui.Weight_Edit->text());
 	
 		Params.append("0");
@@ -44,6 +44,6 @@ void Params_Window::Set_Params(){
 		this->close();
 	}
 	else {
-		QMessageBox::warning(this, "Error", "'Height' or 'Width', or 'Lenght' is empty");
+		QMessageBox::warning(this, "Error", "'Height' or 'Width', or 'Length' is empty");
 	}
 }
