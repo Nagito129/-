@@ -1,326 +1,325 @@
 /**
  * @file Wall_Sample.h
- * @brief Реализация методов класса Wall_Sample
+ * @brief Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° Wall_Sample
  */
 #include "Wall_Sample.h"
 
- /**
-  * @brief Конструктор класса Wall_Sample с параметрами длины и ширины
-  * @param Length Длина стены
-  * @param Width Ширина стены
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Wall_Sample СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РґР»РёРЅС‹ Рё С€РёСЂРёРЅС‹
+  * @param Length Р”Р»РёРЅР° СЃС‚РµРЅС‹
+  * @param Width РЁРёСЂРёРЅР° СЃС‚РµРЅС‹
   */
 Wall_Sample::Wall_Sample(qreal Length, qreal Width)
 {
-	this->Length = Length;
-	this->Width = Width;
-	Old_Width = Width;
-	Old_Length = Length;
-	
-	setAcceptHoverEvents(true);
+    this->Length = Length;
+    this->Width = Width;
+    Old_Width = Width;
+    Old_Length = Length;
 
-	Object_Color.setRgb(94, 94, 94);
-	Default_Color.setRgb(94, 94, 94);
-	Default_Color.setAlpha(140);
-	Coliding_Color.setRgb(210, 20, 20);
-	Coliding_Color.setAlpha(140);
-	Mode = OFF;
-	this->setZValue(1);
+    setAcceptHoverEvents(true);
+
+    Object_Color.setRgb(94, 94, 94);
+    Default_Color.setRgb(94, 94, 94);
+    Default_Color.setAlpha(140);
+    Coliding_Color.setRgb(210, 20, 20);
+    Coliding_Color.setAlpha(140);
+    Mode = OFF;
+    this->setZValue(1);
 }
 
 /**
- * @brief Конструктор класса Wall_Sample по умолчанию
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Wall_Sample РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
  */
 Wall_Sample::Wall_Sample()
 {
-	setAcceptHoverEvents(true);
-	
-	Object_Color.setRgb(94, 94, 94);
-	Object_Color.setAlpha(140);
-	Default_Color.setRgb(94, 94, 94);
-	Default_Color.setAlpha(140);
-	Coliding_Color.setRgb(210, 20, 20);
-	Coliding_Color.setAlpha(140);
-	this->setZValue(1);
+    setAcceptHoverEvents(true);
+
+    Object_Color.setRgb(94, 94, 94);
+    Object_Color.setAlpha(140);
+    Default_Color.setRgb(94, 94, 94);
+    Default_Color.setAlpha(140);
+    Coliding_Color.setRgb(210, 20, 20);
+    Coliding_Color.setAlpha(140);
+    this->setZValue(1);
 }
 
 /**
- * @brief Установка режима для элемента
- * @param Mode Режим: 0 - OFF, 1 - MOVE, 3 - DELETE
+ * @brief РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° РґР»СЏ СЌР»РµРјРµРЅС‚Р°
+ * @param Mode Р РµР¶РёРј: 0 - OFF, 1 - MOVE, 3 - DELETE
  */
 void Wall_Sample::Set_Mode(int Mode)
 {
-	if (Mode == 0) {
-		this->Mode = OFF;
-	}
-	if (Mode == 1) {
-		this->Mode = MOVE;
-	}
-	if (Mode == 3) {
-		this->Mode = DELETE;
-	}
+    if (Mode == 0) {
+        this->Mode = OFF;
+    }
+    if (Mode == 1) {
+        this->Mode = MOVE;
+    }
+    if (Mode == 3) {
+        this->Mode = DELETE;
+    }
 }
 
 /**
- * @brief Получение флага удаления элемента
- * @return true, если элемент должен быть удален, иначе - false
+ * @brief РџРѕР»СѓС‡РµРЅРёРµ С„Р»Р°РіР° СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р°
+ * @return true, РµСЃР»Рё СЌР»РµРјРµРЅС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРґР°Р»РµРЅ, РёРЅР°С‡Рµ - false
  */
 bool Wall_Sample::Get_Delete_Flag()
 {
-	return Delete_Flag;
+    return Delete_Flag;
 }
 
 /**
- * @brief Проверка возможности размещения элемента на сцене
- * @return true, если нет коллизий, иначе - false
+ * @brief РџСЂРѕРІРµСЂРєР° РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СЂР°Р·РјРµС‰РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РЅР° СЃС†РµРЅРµ
+ * @return true, РµСЃР»Рё РЅРµС‚ РєРѕР»Р»РёР·РёР№, РёРЅР°С‡Рµ - false
  */
 bool Wall_Sample::Spawn_Accept()
 {
-	if (scene()->collidingItems(this).isEmpty()) {
-		Mode = OFF;
-		Object_Color.setAlpha(255);
-		Set_Obj_Color(Object_Color);
-		return true;
-	}
-	else {
-		return false;
-	}
+    if (scene()->collidingItems(this).isEmpty()) {
+        Mode = OFF;
+        Object_Color.setAlpha(255);
+        Set_Obj_Color(Object_Color);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 /**
- * @brief Определение прямоугольной области, занимаемой элементом
- * @return Прямоугольная область
+ * @brief РћРїСЂРµРґРµР»РµРЅРёРµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРѕР№ РѕР±Р»Р°СЃС‚Рё, Р·Р°РЅРёРјР°РµРјРѕР№ СЌР»РµРјРµРЅС‚РѕРј
+ * @return РџСЂСЏРјРѕСѓРіРѕР»СЊРЅР°СЏ РѕР±Р»Р°СЃС‚СЊ
  */
 QRectF Wall_Sample::boundingRect() const
 {
-	return QRectF(0 - Length / 2, 0 - Width / 2, Length, Width);
+    return QRectF(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
 /**
- * @brief Отрисовка элемента
- * @param Painter Объект рисования
- * @param Option Опции стиля
- * @param Widget Виджет
+ * @brief РћС‚СЂРёСЃРѕРІРєР° СЌР»РµРјРµРЅС‚Р°
+ * @param Painter РћР±СЉРµРєС‚ СЂРёСЃРѕРІР°РЅРёСЏ
+ * @param Option РћРїС†РёРё СЃС‚РёР»СЏ
+ * @param Widget Р’РёРґР¶РµС‚
  */
 void Wall_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
-	Painter->setBrush(Object_Color);
-	Painter->drawRect(0 - Length / 2, 0 - Width / 2, Length, Width);
+    Painter->setBrush(Object_Color);
+    Painter->drawRect(0 - Length / 2, 0 - Width / 2, Length, Width);
 }
 
 /**
- * @brief Обработка события перемещения мыши
- * @param Event Событие перемещения мыши
+ * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё
+ * @param Event РЎРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё
  */
 void Wall_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 {
-	if (Mode == SIZE || (Mode == SPAWN && (Edge == TOP || Edge == BOT || Edge == LEFT || Edge == RIGHT))) {
-		if (Edge == TOP || Edge == BOT) {
-			prepareGeometryChange();
-			Width = (qAbs(Event->pos().y())) * 2;
+    if (Mode == SIZE || (Mode == SPAWN && (Edge == TOP || Edge == BOT || Edge == LEFT || Edge == RIGHT))) {
+        if (Edge == TOP || Edge == BOT) {
+            prepareGeometryChange();
+            Width = (qAbs(Event->pos().y())) * 2;
 
-			if (Edge == TOP) {
-				this->setPos(this->pos().x(), -(Width - Old_Width) / 2);
-			}
-			else if (Edge == BOT) {
-				this->setPos(this->pos().x(), (Width - Old_Width) / 2);
-			}
+            if (Edge == TOP) {
+                this->setPos(this->pos().x(), -(Width - Old_Width) / 2);
+            }
+            else if (Edge == BOT) {
+                this->setPos(this->pos().x(), (Width - Old_Width) / 2);
+            }
 
-			Check_Coliding();
-		}
+            Check_Coliding();
+        }
 
-		if (Edge == LEFT || Edge == RIGHT) {
-			prepareGeometryChange();
-			Length = (qAbs(Event->pos().x())) * 2;
+        if (Edge == LEFT || Edge == RIGHT) {
+            prepareGeometryChange();
+            Length = (qAbs(Event->pos().x())) * 2;
 
-			if (Edge == LEFT) {
-				this->setPos((Length - Old_Length) / 2, this->pos().y());
-			}
-			else if (Edge == RIGHT) {
-				this->setPos(-(Length - Old_Length) / 2, this->pos().y());
-			}
+            if (Edge == LEFT) {
+                this->setPos((Length - Old_Length) / 2, this->pos().y());
+            }
+            else if (Edge == RIGHT) {
+                this->setPos(-(Length - Old_Length) / 2, this->pos().y());
+            }
 
-			Check_Coliding();
-		}
-	}
-	
-	if (Mode == MOVE || (Mode == SPAWN && Edge == NOTHING)) {
-			this->setPos(mapToScene(Event->pos()));
+            Check_Coliding();
+        }
+    }
 
-			Check_Coliding();
-	}
+    if (Mode == MOVE || (Mode == SPAWN && Edge == NOTHING)) {
+        this->setPos(mapToScene(Event->pos()));
+
+        Check_Coliding();
+    }
 }
 
 /**
- * @brief Обработка события нажатия кнопки мыши
- * @param Event Событие нажатия кнопки мыши
+ * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РјС‹С€Рё
+ * @param Event РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РјС‹С€Рё
  */
 void Wall_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
-	this->setZValue(1);
+    this->setZValue(1);
 
-	if (Mode == SIZE || Mode == MOVE) {
-		Return_Position = this->pos();
-		Object_Color.setAlpha(140);
-		update();
-	}
-	else if (Mode == DELETE) {
-		if (Delete_Flag == false) {
-			Delete_Flag = true;
-			Object_Color.setRgb(59, 106, 171);
-			this->setScale(1.05);
-		}
-		else {
-			Delete_Flag = false;
-			Object_Color = Default_Color;
-			this->setScale(1);
-		}
-	}
+    if (Mode == SIZE || Mode == MOVE) {
+        Return_Position = this->pos();
+        Object_Color.setAlpha(140);
+        update();
+    }
+    else if (Mode == DELETE) {
+        if (Delete_Flag == false) {
+            Delete_Flag = true;
+            Object_Color.setRgb(59, 106, 171);
+            this->setScale(1.05);
+        }
+        else {
+            Delete_Flag = false;
+            Object_Color = Default_Color;
+            this->setScale(1);
+        }
+    }
 }
 
 /**
- * @brief Обработка события отпускания кнопки мыши
- * @param Event Событие отпускания кнопки мыши
+ * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РѕС‚РїСѓСЃРєР°РЅРёСЏ РєРЅРѕРїРєРё РјС‹С€Рё
+ * @param Event РЎРѕР±С‹С‚РёРµ РѕС‚РїСѓСЃРєР°РЅРёСЏ РєРЅРѕРїРєРё РјС‹С€Рё
  */
 void Wall_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
-	if (Mode == SIZE || Mode == MOVE) {
-		this->setZValue(0);
+    if (Mode == SIZE || Mode == MOVE) {
+        this->setZValue(0);
 
-		if (Check_Coliding() && Mode == SIZE) {
-			Width = Old_Width;
-			Length = Old_Length;
-			this->setPos(Return_Position);
-		}
+        if (Check_Coliding() && Mode == SIZE) {
+            Width = Old_Width;
+            Length = Old_Length;
+            this->setPos(Return_Position);
+        }
+        else {
+            if (Old_Length != Length) {
+                Old_Length = Length;
+            }
+            if (Old_Width != Width) {
+                Old_Width = Width;
+            }
+            if (Width < Min_Size) {
+                Width = Min_Size;
+                Old_Width = Width;
+            }
+            if (Length < Min_Size) {
+                Length = Min_Size;
+                Old_Length = Width;
+            }
+        }
 
-		else {
-			if (Old_Length != Length) {
-				Old_Length = Length;
-			}
-			if (Old_Width != Width) {
-				Old_Width = Width;
-			}
-			if (Width < Min_Size) {
-				Width = Min_Size;
-				Old_Width = Width;
-			}
-			if (Length < Min_Size) {
-				Length = Min_Size;
-				Old_Length = Width;
-			}
-		}
+        if (Check_Coliding() && Mode == MOVE) {
+            this->setPos(Return_Position);
+        }
 
-		if (Check_Coliding() && Mode == MOVE) {
-			this->setPos(Return_Position);
-		}
-
-		Object_Color = Default_Color;
-		Object_Color.setAlpha(255);
-		update();
-	}
+        Object_Color = Default_Color;
+        Object_Color.setAlpha(255);
+        update();
+    }
 }
 
 /**
- * @brief Обработка события перемещения курсора мыши над элементом
- * @param Event Событие перемещения курсора мыши
+ * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РјС‹С€Рё РЅР°Рґ СЌР»РµРјРµРЅС‚РѕРј
+ * @param Event РЎРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РјС‹С€Рё
  */
 void Wall_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 {
-	if (Mode == MOVE || Mode == SIZE || Mode == SPAWN) {
-		if (Event->pos().x() > Length / 2 - 3 && Event->pos().x() < Length / 2 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
-			Edge = LEFT;
-			if (Mode == MOVE) {
-				Mode = SIZE;
-			}
-			this->setCursor(QCursor(Qt::SizeHorCursor));
-		}
+    if (Mode == MOVE || Mode == SIZE || Mode == SPAWN) {
+        if (Event->pos().x() > Length / 2 - 3 && Event->pos().x() < Length / 2 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
+            Edge = LEFT;
+            if (Mode == MOVE) {
+                Mode = SIZE;
+            }
+            this->setCursor(QCursor(Qt::SizeHorCursor));
+        }
 
-		else if (Event->pos().x() > -Length / 2 && Event->pos().x() < -Length / 2 + 3 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
-			Edge = RIGHT;
-			if (Mode == MOVE) {
-				Mode = SIZE;
-			}
-			this->setCursor(QCursor(Qt::SizeHorCursor));
-		}
+        else if (Event->pos().x() > -Length / 2 && Event->pos().x() < -Length / 2 + 3 && Event->pos().y() < Width / 2 - 3 && Event->pos().y() > -Width / 2 + 3) {
+            Edge = RIGHT;
+            if (Mode == MOVE) {
+                Mode = SIZE;
+            }
+            this->setCursor(QCursor(Qt::SizeHorCursor));
+        }
 
-		else if (Event->pos().y() < -Width / 2 + 3 && Event->pos().y() > -Width / 2 && Event->pos().x() < Length / 2 - 3 && Event->pos().x() > -Length / 2 + 3) {
-			Edge = TOP;
-			if (Mode == MOVE) {
-				Mode = SIZE;
-			}
-			this->setCursor(QCursor(Qt::SizeVerCursor));
-		}
+        else if (Event->pos().y() < -Width / 2 + 3 && Event->pos().y() > -Width / 2 && Event->pos().x() < Length / 2 - 3 && Event->pos().x() > -Length / 2 + 3) {
+            Edge = TOP;
+            if (Mode == MOVE) {
+                Mode = SIZE;
+            }
+            this->setCursor(QCursor(Qt::SizeVerCursor));
+        }
 
-		else if (Event->pos().y() < Width / 2 && Event->pos().y() > Width / 2 - 3 && Event->pos().x() < Length / 2 - 3 && Event->pos().x() > -Length / 2 + 3) {
-			Edge = BOT;
-			if (Mode == MOVE) {
-				Mode = SIZE;
-			}
-			this->setCursor(QCursor(Qt::SizeVerCursor));
-		}
-		
-		else {
-			if (Mode == SIZE) {
-				Mode = MOVE;
-			}
-			Edge = NOTHING;
-			this->setCursor(QCursor(Qt::ArrowCursor));
-		}
-	}
+        else if (Event->pos().y() < Width / 2 && Event->pos().y() > Width / 2 - 3 && Event->pos().x() < Length / 2 - 3 && Event->pos().x() > -Length / 2 + 3) {
+            Edge = BOT;
+            if (Mode == MOVE) {
+                Mode = SIZE;
+            }
+            this->setCursor(QCursor(Qt::SizeVerCursor));
+        }
+
+        else {
+            if (Mode == SIZE) {
+                Mode = MOVE;
+            }
+            Edge = NOTHING;
+            this->setCursor(QCursor(Qt::ArrowCursor));
+        }
+    }
 }
 
 /**
- * @brief Обработка события выхода курсора мыши за пределы элемента
- * @param Event Событие выхода курсора мыши за пределы элемента
+ * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РІС‹С…РѕРґР° РєСѓСЂСЃРѕСЂР° РјС‹С€Рё Р·Р° РїСЂРµРґРµР»С‹ СЌР»РµРјРµРЅС‚Р°
+ * @param Event РЎРѕР±С‹С‚РёРµ РІС‹С…РѕРґР° РєСѓСЂСЃРѕСЂР° РјС‹С€Рё Р·Р° РїСЂРµРґРµР»С‹ СЌР»РµРјРµРЅС‚Р°
  */
 void Wall_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 {
-	if (Mode == SIZE) {
-		this->setCursor(QCursor(Qt::ArrowCursor));
-		Mode = MOVE;
-	}
+    if (Mode == SIZE) {
+        this->setCursor(QCursor(Qt::ArrowCursor));
+        Mode = MOVE;
+    }
 }
 
 /**
- * @brief Проверка коллизий элемента с другими элементами на сцене
- * @return true, если есть коллизии, иначе - false
+ * @brief РџСЂРѕРІРµСЂРєР° РєРѕР»Р»РёР·РёР№ СЌР»РµРјРµРЅС‚Р° СЃ РґСЂСѓРіРёРјРё СЌР»РµРјРµРЅС‚Р°РјРё РЅР° СЃС†РµРЅРµ
+ * @return true, РµСЃР»Рё РµСЃС‚СЊ РєРѕР»Р»РёР·РёРё, РёРЅР°С‡Рµ - false
  */
 bool Wall_Sample::Check_Coliding()
 {
-	if (scene()->collidingItems(this).isEmpty()) {
-		Set_Obj_Color(Default_Color);
-		update();
-		return false;
-	}
+    if (scene()->collidingItems(this).isEmpty()) {
+        Set_Obj_Color(Default_Color);
+        update();
+        return false;
+    }
 
-	else {
-		Set_Obj_Color(Coliding_Color);
-		update();
-		return true;
-	}
+    else {
+        Set_Obj_Color(Coliding_Color);
+        update();
+        return true;
+    }
 }
 
 /**
- * @brief Установка цвета элемента
- * @param Color Цвет элемента
+ * @brief РЈСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р° СЌР»РµРјРµРЅС‚Р°
+ * @param Color Р¦РІРµС‚ СЌР»РµРјРµРЅС‚Р°
  */
 void Wall_Sample::Set_Obj_Color(QColor Color)
 {
-	Object_Color = Color;
-	update();
+    Object_Color = Color;
+    update();
 }
 
 /**
- * @brief Получение длины элемента
- * @return Длина элемента
+ * @brief РџРѕР»СѓС‡РµРЅРёРµ РґР»РёРЅС‹ СЌР»РµРјРµРЅС‚Р°
+ * @return Р”Р»РёРЅР° СЌР»РµРјРµРЅС‚Р°
  */
 int Wall_Sample::Get_Length() {
-	return Length;
+    return Length;
 }
 
 /**
- * @brief Получение ширины элемента
- * @return Ширина элемента
+ * @brief РџРѕР»СѓС‡РµРЅРёРµ С€РёСЂРёРЅС‹ СЌР»РµРјРµРЅС‚Р°
+ * @return РЁРёСЂРёРЅР° СЌР»РµРјРµРЅС‚Р°
  */
 int Wall_Sample::Get_Width() {
-	return Width;
+    return Width;
 }

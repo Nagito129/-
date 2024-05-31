@@ -1,14 +1,14 @@
 /**
  * @file Door_Sample.cpp
- * @brief Реализация класса Door_Sample.
+ * @brief Р РµР°Р»РёР·Р°С†РёСЏ РєР»Р°СЃСЃР° Door_Sample.
  */
 
 #include "Door_Sample.h"
 
- /**
-  * @brief Конструктор класса Door_Sample с параметрами.
-  * @param Length Длина двери.
-  * @param Width Ширина двери.
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Door_Sample СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.
+  * @param Length Р”Р»РёРЅР° РґРІРµСЂРё.
+  * @param Width РЁРёСЂРёРЅР° РґРІРµСЂРё.
   */
 Door_Sample::Door_Sample(qreal Length, qreal Width)
 {
@@ -29,7 +29,7 @@ Door_Sample::Door_Sample(qreal Length, qreal Width)
 }
 
 /**
- * @brief Конструктор класса Door_Sample без параметров.
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Door_Sample Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ.
  */
 Door_Sample::Door_Sample()
 {
@@ -45,8 +45,8 @@ Door_Sample::Door_Sample()
 }
 
 /**
- * @brief Устанавливает режим работы объекта.
- * @param Mode Режим работы: 0 - OFF, 1 - MOVE, 3 - DELETE.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹ РѕР±СЉРµРєС‚Р°.
+ * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹: 0 - OFF, 1 - MOVE, 3 - DELETE.
  */
 void Door_Sample::Set_Mode(int Mode)
 {
@@ -62,8 +62,8 @@ void Door_Sample::Set_Mode(int Mode)
 }
 
 /**
- * @brief Получает флаг удаления.
- * @return true, если объект помечен для удаления.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ С„Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ.
+ * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ РїРѕРјРµС‡РµРЅ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ.
  */
 bool Door_Sample::Get_Delete_Flag()
 {
@@ -71,8 +71,8 @@ bool Door_Sample::Get_Delete_Flag()
 }
 
 /**
- * @brief Проверяет возможность появления объекта на сцене.
- * @return true, если объект не сталкивается с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕСЏРІР»РµРЅРёСЏ РѕР±СЉРµРєС‚Р° РЅР° СЃС†РµРЅРµ.
+ * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ РЅРµ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Door_Sample::Spawn_Accept()
 {
@@ -88,8 +88,8 @@ bool Door_Sample::Spawn_Accept()
 }
 
 /**
- * @brief Возвращает ограничивающий прямоугольник объекта.
- * @return Прямоугольник, ограничивающий объект.
+ * @brief Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РѕР±СЉРµРєС‚Р°.
+ * @return РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє, РѕРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РѕР±СЉРµРєС‚.
  */
 QRectF Door_Sample::boundingRect() const
 {
@@ -97,10 +97,10 @@ QRectF Door_Sample::boundingRect() const
 }
 
 /**
- * @brief Отрисовывает объект.
- * @param Painter Указатель на объект QPainter.
- * @param Option Указатель на опции стиля.
- * @param Widget Указатель на виджет.
+ * @brief РћС‚СЂРёСЃРѕРІС‹РІР°РµС‚ РѕР±СЉРµРєС‚.
+ * @param Painter РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QPainter.
+ * @param Option РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕРїС†РёРё СЃС‚РёР»СЏ.
+ * @param Widget РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РІРёРґР¶РµС‚.
  */
 void Door_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
@@ -111,8 +111,8 @@ void Door_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Optio
 }
 
 /**
- * @brief Обрабатывает событие перемещения мыши.
- * @param Event Указатель на событие.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ.
  */
 void Door_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -154,8 +154,8 @@ void Door_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие нажатия кнопки мыши.
- * @param Event Указатель на событие.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ.
  */
 void Door_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -181,8 +181,8 @@ void Door_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие отпускания кнопки мыши.
- * @param Event Указатель на событие.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РѕС‚РїСѓСЃРєР°РЅРёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ.
  */
 void Door_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -222,8 +222,8 @@ void Door_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие перемещения мыши при наведении.
- * @param Event Указатель на событие.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё РїСЂРё РЅР°РІРµРґРµРЅРёРё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ.
  */
 void Door_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 {
@@ -271,8 +271,8 @@ void Door_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие ухода мыши с области объекта.
- * @param Event Указатель на событие.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ СѓС…РѕРґР° РјС‹С€Рё СЃ РѕР±Р»Р°СЃС‚Рё РѕР±СЉРµРєС‚Р°.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ.
  */
 void Door_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 {
@@ -283,8 +283,8 @@ void Door_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 }
 
 /**
- * @brief Проверяет столкновение объекта с другими объектами.
- * @return true, если объект сталкивается с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ СЃС‚РѕР»РєРЅРѕРІРµРЅРёРµ РѕР±СЉРµРєС‚Р° СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
+ * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Door_Sample::Check_Coliding()
 {
@@ -301,8 +301,8 @@ bool Door_Sample::Check_Coliding()
 }
 
 /**
- * @brief Устанавливает цвет объекта.
- * @param Color Новый цвет объекта.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
+ * @param Color РќРѕРІС‹Р№ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
  */
 void Door_Sample::Set_Obj_Color(QColor Color)
 {
@@ -311,16 +311,16 @@ void Door_Sample::Set_Obj_Color(QColor Color)
 }
 
 /**
- * @brief Получает длину объекта.
- * @return Длина объекта.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ РґР»РёРЅСѓ РѕР±СЉРµРєС‚Р°.
+ * @return Р”Р»РёРЅР° РѕР±СЉРµРєС‚Р°.
  */
 int Door_Sample::Get_Length() {
     return Length;
 }
 
 /**
- * @brief Получает ширину объекта.
- * @return Ширина объекта.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ С€РёСЂРёРЅСѓ РѕР±СЉРµРєС‚Р°.
+ * @return РЁРёСЂРёРЅР° РѕР±СЉРµРєС‚Р°.
  */
 int Door_Sample::Get_Width() {
     return Width;

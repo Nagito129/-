@@ -1,14 +1,14 @@
 /**
  * @file Stairs_Sample.cpp
- * @brief Реализация класса Stairs_Sample для работы с объектом "Лестница".
+ * @brief Р РµР°Р»РёР·Р°С†РёСЏ РєР»Р°СЃСЃР° Stairs_Sample РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±СЉРµРєС‚РѕРј "Р›РµСЃС‚РЅРёС†Р°".
  */
 
 #include "Stairs_Sample.h"
 
- /**
-  * @brief Конструктор класса Stairs_Sample с параметрами.
-  * @param Length Длина лестницы.
-  * @param Width Ширина лестницы.
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Stairs_Sample СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.
+  * @param Length Р”Р»РёРЅР° Р»РµСЃС‚РЅРёС†С‹.
+  * @param Width РЁРёСЂРёРЅР° Р»РµСЃС‚РЅРёС†С‹.
   */
 Stairs_Sample::Stairs_Sample(qreal Length, qreal Width)
 {
@@ -29,7 +29,7 @@ Stairs_Sample::Stairs_Sample(qreal Length, qreal Width)
 }
 
 /**
- * @brief Конструктор класса Stairs_Sample без параметров.
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Stairs_Sample Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ.
  */
 Stairs_Sample::Stairs_Sample()
 {
@@ -45,8 +45,8 @@ Stairs_Sample::Stairs_Sample()
 }
 
 /**
- * @brief Устанавливает режим работы лестницы.
- * @param Mode Режим работы (0 - OFF, 1 - MOVE, 3 - DELETE).
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹ Р»РµСЃС‚РЅРёС†С‹.
+ * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹ (0 - OFF, 1 - MOVE, 3 - DELETE).
  */
 void Stairs_Sample::Set_Mode(int Mode)
 {
@@ -62,8 +62,8 @@ void Stairs_Sample::Set_Mode(int Mode)
 }
 
 /**
- * @brief Получает флаг удаления лестницы.
- * @return true, если лестница подлежит удалению.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ С„Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ Р»РµСЃС‚РЅРёС†С‹.
+ * @return true, РµСЃР»Рё Р»РµСЃС‚РЅРёС†Р° РїРѕРґР»РµР¶РёС‚ СѓРґР°Р»РµРЅРёСЋ.
  */
 bool Stairs_Sample::Get_Delete_Flag()
 {
@@ -71,8 +71,8 @@ bool Stairs_Sample::Get_Delete_Flag()
 }
 
 /**
- * @brief Проверяет возможность появления лестницы без столкновений.
- * @return true, если лестница не сталкивается с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕСЏРІР»РµРЅРёСЏ Р»РµСЃС‚РЅРёС†С‹ Р±РµР· СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№.
+ * @return true, РµСЃР»Рё Р»РµСЃС‚РЅРёС†Р° РЅРµ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Stairs_Sample::Spawn_Accept()
 {
@@ -88,8 +88,8 @@ bool Stairs_Sample::Spawn_Accept()
 }
 
 /**
- * @brief Получает ограничивающий прямоугольник лестницы.
- * @return Ограничивающий прямоугольник.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ РѕРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє Р»РµСЃС‚РЅРёС†С‹.
+ * @return РћРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє.
  */
 QRectF Stairs_Sample::boundingRect() const
 {
@@ -97,10 +97,10 @@ QRectF Stairs_Sample::boundingRect() const
 }
 
 /**
- * @brief Отрисовывает лестницу.
- * @param Painter Указатель на объект QPainter.
- * @param Option Указатель на опции стиля.
- * @param Widget Указатель на виджет.
+ * @brief РћС‚СЂРёСЃРѕРІС‹РІР°РµС‚ Р»РµСЃС‚РЅРёС†Сѓ.
+ * @param Painter РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QPainter.
+ * @param Option РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕРїС†РёРё СЃС‚РёР»СЏ.
+ * @param Widget РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РІРёРґР¶РµС‚.
  */
 void Stairs_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
@@ -111,8 +111,8 @@ void Stairs_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Opt
 }
 
 /**
- * @brief Обрабатывает событие перемещения мыши.
- * @param Event Указатель на событие QGraphicsSceneMouseEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneMouseEvent.
  */
 void Stairs_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -153,8 +153,8 @@ void Stairs_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие нажатия кнопки мыши.
- * @param Event Указатель на событие QGraphicsSceneMouseEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneMouseEvent.
  */
 void Stairs_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -180,8 +180,8 @@ void Stairs_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие отпускания кнопки мыши.
- * @param Event Указатель на событие QGraphicsSceneMouseEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РѕС‚РїСѓСЃРєР°РЅРёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneMouseEvent.
  */
 void Stairs_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -221,8 +221,8 @@ void Stairs_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие перемещения мыши с включенным режимом hover.
- * @param Event Указатель на событие QGraphicsSceneHoverEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё СЃ РІРєР»СЋС‡РµРЅРЅС‹Рј СЂРµР¶РёРјРѕРј hover.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneHoverEvent.
  */
 void Stairs_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 {
@@ -266,8 +266,8 @@ void Stairs_Sample::hoverMoveEvent(QGraphicsSceneHoverEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие выхода мыши из области объекта с включенным режимом hover.
- * @param Event Указатель на событие QGraphicsSceneHoverEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РІС‹С…РѕРґР° РјС‹С€Рё РёР· РѕР±Р»Р°СЃС‚Рё РѕР±СЉРµРєС‚Р° СЃ РІРєР»СЋС‡РµРЅРЅС‹Рј СЂРµР¶РёРјРѕРј hover.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneHoverEvent.
  */
 void Stairs_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 {
@@ -278,8 +278,8 @@ void Stairs_Sample::hoverLeaveEvent(QGraphicsSceneHoverEvent* Event)
 }
 
 /**
- * @brief Проверяет столкновение объекта с другими объектами.
- * @return true, если объект сталкивается с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ СЃС‚РѕР»РєРЅРѕРІРµРЅРёРµ РѕР±СЉРµРєС‚Р° СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
+ * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Stairs_Sample::Check_Coliding()
 {
@@ -296,8 +296,8 @@ bool Stairs_Sample::Check_Coliding()
 }
 
 /**
- * @brief Устанавливает цвет объекта.
- * @param Color Новый цвет объекта.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
+ * @param Color РќРѕРІС‹Р№ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
  */
 void Stairs_Sample::Set_Obj_Color(QColor Color)
 {
@@ -306,16 +306,16 @@ void Stairs_Sample::Set_Obj_Color(QColor Color)
 }
 
 /**
- * @brief Получает длину лестницы.
- * @return Длина лестницы.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ РґР»РёРЅСѓ Р»РµСЃС‚РЅРёС†С‹.
+ * @return Р”Р»РёРЅР° Р»РµСЃС‚РЅРёС†С‹.
  */
 int Stairs_Sample::Get_Length() {
     return Length;
 }
 
 /**
- * @brief Получает ширину лестницы.
- * @return Ширина лестницы.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ С€РёСЂРёРЅСѓ Р»РµСЃС‚РЅРёС†С‹.
+ * @return РЁРёСЂРёРЅР° Р»РµСЃС‚РЅРёС†С‹.
  */
 int Stairs_Sample::Get_Width() {
     return Width;

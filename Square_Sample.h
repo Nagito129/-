@@ -1,6 +1,6 @@
 /**
  * @file Square_Sample.h
- * @brief Объявление класса Square_Sample для работы с квадратным образцом
+ * @brief РћР±СЉСЏРІР»РµРЅРёРµ РєР»Р°СЃСЃР° Square_Sample РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРІР°РґСЂР°С‚РЅС‹Рј РѕР±СЂР°Р·С†РѕРј
  */
 
 #pragma once
@@ -11,57 +11,57 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QCursor>
 
- /**
-  * @brief Класс для работы с квадратным образцом
+/**
+  * @brief РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРІР°РґСЂР°С‚РЅС‹Рј РѕР±СЂР°Р·С†РѕРј
   */
 class Square_Sample : public QGraphicsItem
 {
 public:
     /**
-     * @brief Конструктор класса Square_Sample
-     * @param Name Название образца
-     * @param Length Длина образца
-     * @param Width Ширина образца
-     * @param Angle Угол поворота образца
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Square_Sample
+     * @param Name РќР°Р·РІР°РЅРёРµ РѕР±СЂР°Р·С†Р°
+     * @param Length Р”Р»РёРЅР° РѕР±СЂР°Р·С†Р°
+     * @param Width РЁРёСЂРёРЅР° РѕР±СЂР°Р·С†Р°
+     * @param Angle РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РѕР±СЂР°Р·С†Р°
      */
     Square_Sample(QString Name, qreal Length, qreal Width, qreal Angle);
 
     /**
-     * @brief Конструктор класса Square_Sample
-     * @param Name Название образца
-     * @param Length Длина образца
-     * @param Width Ширина образца
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Square_Sample
+     * @param Name РќР°Р·РІР°РЅРёРµ РѕР±СЂР°Р·С†Р°
+     * @param Length Р”Р»РёРЅР° РѕР±СЂР°Р·С†Р°
+     * @param Width РЁРёСЂРёРЅР° РѕР±СЂР°Р·С†Р°
      */
     Square_Sample(QString Name, qreal Length, qreal Width);
 
     /**
-     * @brief Установка цвета и загрузки образца
-     * @param Color Цвет загрузки
-     * @param Workload Загрузка
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р° Рё Р·Р°РіСЂСѓР·РєРё РѕР±СЂР°Р·С†Р°
+     * @param Color Р¦РІРµС‚ Р·Р°РіСЂСѓР·РєРё
+     * @param Workload Р—Р°РіСЂСѓР·РєР°
      */
     void Set_Workload(QColor Color, qreal Workload);
 
     /**
-     * @brief Проверка возможности размещения образца
-     * @return Возможность размещения образца
+     * @brief РџСЂРѕРІРµСЂРєР° РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СЂР°Р·РјРµС‰РµРЅРёСЏ РѕР±СЂР°Р·С†Р°
+     * @return Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°Р·РјРµС‰РµРЅРёСЏ РѕР±СЂР°Р·С†Р°
      */
     bool Spawn_Accept();
 
     /**
-     * @brief Установка режима работы
-     * @param Mode Режим работы
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹
+     * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹
      */
     void Set_Mode(int Mode);
 
     /**
-     * @brief Получение флага удаления
-     * @return Флаг удаления
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ С„Р»Р°РіР° СѓРґР°Р»РµРЅРёСЏ
+     * @return Р¤Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ
      */
     bool Get_Delete_Flag();
 
     /**
-     * @brief Получение угла поворота
-     * @return Угол поворота
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ СѓРіР»Р° РїРѕРІРѕСЂРѕС‚Р°
+     * @return РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р°
      */
     int Get_Angle();
 
@@ -81,30 +81,30 @@ private:
         DELETE = 3
     };
 
-    Mods Mode = SPAWN; ///< Режим работы
+    Mods Mode = SPAWN; ///< Р РµР¶РёРј СЂР°Р±РѕС‚С‹
 
-    QString Name; ///< Название образца
-    qreal Length, ///< Длина образца
-        Width, ///< Ширина образца
-        Angle = 0, ///< Угол поворота
-        Workload_Status; ///< Загрузка
+    QString Name; ///< РќР°Р·РІР°РЅРёРµ РѕР±СЂР°Р·С†Р°
+    qreal Length, ///< Р”Р»РёРЅР° РѕР±СЂР°Р·С†Р°
+        Width, ///< РЁРёСЂРёРЅР° РѕР±СЂР°Р·С†Р°
+        Angle = 0, ///< РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р°
+        Workload_Status; ///< Р—Р°РіСЂСѓР·РєР°
 
-    QColor Color_Status, ///< Цвет загрузки
-        Coliding_Color, ///< Цвет столкновения
-        Object_Color; ///< Цвет объекта
+    QColor Color_Status, ///< Р¦РІРµС‚ Р·Р°РіСЂСѓР·РєРё
+        Coliding_Color, ///< Р¦РІРµС‚ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
+        Object_Color; ///< Р¦РІРµС‚ РѕР±СЉРµРєС‚Р°
 
-    bool Delete_Flag = false; ///< Флаг удаления
-    QPointF Return_Position; ///< Позиция возврата
+    bool Delete_Flag = false; ///< Р¤Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ
+    QPointF Return_Position; ///< РџРѕР·РёС†РёСЏ РІРѕР·РІСЂР°С‚Р°
 
     /**
-     * @brief Проверка столкновений
-     * @return Результат проверки столкновений
+     * @brief РџСЂРѕРІРµСЂРєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№
+     * @return Р РµР·СѓР»СЊС‚Р°С‚ РїСЂРѕРІРµСЂРєРё СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№
      */
     bool Check_Coliding();
 
     /**
-     * @brief Установка цвета объекта
-     * @param Color Цвет
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р° РѕР±СЉРµРєС‚Р°
+     * @param Color Р¦РІРµС‚
      */
     void Set_Obj_Color(QColor Color);
 };

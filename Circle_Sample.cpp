@@ -1,17 +1,17 @@
 /**
  * @file Circle_Sample.h
- * @brief Определение класса Circle_Sample для работы с графическими элементами круга.
+ * @brief РћРїСЂРµРґРµР»РµРЅРёРµ РєР»Р°СЃСЃР° Circle_Sample РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РіСЂР°С„РёС‡РµСЃРєРёРјРё СЌР»РµРјРµРЅС‚Р°РјРё РєСЂСѓРіР°.
  */
 
 #include "Circle_Sample.h"
 
- /**
-  * @brief Конструктор класса Circle_Sample.
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Circle_Sample.
   *
-  * @param Name Имя круга.
-  * @param Length Длина круга.
-  * @param Width Ширина круга.
-  * @param Angle Угол поворота круга.
+  * @param Name РРјСЏ РєСЂСѓРіР°.
+  * @param Length Р”Р»РёРЅР° РєСЂСѓРіР°.
+  * @param Width РЁРёСЂРёРЅР° РєСЂСѓРіР°.
+  * @param Angle РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РєСЂСѓРіР°.
   */
 Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width, qreal Angle)
 {
@@ -26,11 +26,11 @@ Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width, qreal Angl
 }
 
 /**
- * @brief Конструктор класса Circle_Sample.
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Circle_Sample.
  *
- * @param Name Имя круга.
- * @param Length Длина круга.
- * @param Width Ширина круга.
+ * @param Name РРјСЏ РєСЂСѓРіР°.
+ * @param Length Р”Р»РёРЅР° РєСЂСѓРіР°.
+ * @param Width РЁРёСЂРёРЅР° РєСЂСѓРіР°.
  */
 Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width)
 {
@@ -43,10 +43,10 @@ Circle_Sample::Circle_Sample(QString Name, qreal Length, qreal Width)
 }
 
 /**
- * @brief Устанавливает нагрузку на круг.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РЅР°РіСЂСѓР·РєСѓ РЅР° РєСЂСѓРі.
  *
- * @param Color Цвет статуса.
- * @param Workload Нагрузка.
+ * @param Color Р¦РІРµС‚ СЃС‚Р°С‚СѓСЃР°.
+ * @param Workload РќР°РіСЂСѓР·РєР°.
  */
 void Circle_Sample::Set_Workload(QColor Color, qreal Workload)
 {
@@ -56,10 +56,10 @@ void Circle_Sample::Set_Workload(QColor Color, qreal Workload)
 }
 
 /**
- * @brief Проверяет возможность появления круга.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕСЏРІР»РµРЅРёСЏ РєСЂСѓРіР°.
  *
- * @return true, если круг не пересекается с другими объектами.
- * @return false, если круг пересекается с другими объектами.
+ * @return true, РµСЃР»Рё РєСЂСѓРі РЅРµ РїРµСЂРµСЃРµРєР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
+ * @return false, РµСЃР»Рё РєСЂСѓРі РїРµСЂРµСЃРµРєР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Circle_Sample::Spawn_Accept()
 {
@@ -75,9 +75,9 @@ bool Circle_Sample::Spawn_Accept()
 }
 
 /**
- * @brief Устанавливает режим работы круга.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹ РєСЂСѓРіР°.
  *
- * @param Mode Режим работы (0 - OFF, 1 - MOVE, 3 - DELETE).
+ * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹ (0 - OFF, 1 - MOVE, 3 - DELETE).
  */
 void Circle_Sample::Set_Mode(int Mode)
 {
@@ -93,10 +93,10 @@ void Circle_Sample::Set_Mode(int Mode)
 }
 
 /**
- * @brief Возвращает флаг удаления.
+ * @brief Р’РѕР·РІСЂР°С‰Р°РµС‚ С„Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ.
  *
- * @return true, если объект должен быть удален.
- * @return false, если объект не должен быть удален.
+ * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРґР°Р»РµРЅ.
+ * @return false, РµСЃР»Рё РѕР±СЉРµРєС‚ РЅРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРґР°Р»РµРЅ.
  */
 bool Circle_Sample::Get_Delete_Flag()
 {
@@ -104,9 +104,9 @@ bool Circle_Sample::Get_Delete_Flag()
 }
 
 /**
- * @brief Возвращает границы круга.
+ * @brief Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°РЅРёС†С‹ РєСЂСѓРіР°.
  *
- * @return QRectF Границы круга.
+ * @return QRectF Р“СЂР°РЅРёС†С‹ РєСЂСѓРіР°.
  */
 QRectF Circle_Sample::boundingRect() const
 {
@@ -114,9 +114,9 @@ QRectF Circle_Sample::boundingRect() const
 }
 
 /**
- * @brief Возвращает форму круга.
+ * @brief Р’РѕР·РІСЂР°С‰Р°РµС‚ С„РѕСЂРјСѓ РєСЂСѓРіР°.
  *
- * @return QPainterPath Форма круга.
+ * @return QPainterPath Р¤РѕСЂРјР° РєСЂСѓРіР°.
  */
 QPainterPath Circle_Sample::shape() const
 {
@@ -126,11 +126,11 @@ QPainterPath Circle_Sample::shape() const
 }
 
 /**
- * @brief Рисует круг.
+ * @brief Р РёСЃСѓРµС‚ РєСЂСѓРі.
  *
- * @param Painter Указатель на объект QPainter.
- * @param Option Указатель на объект QStyleOptionGraphicsItem.
- * @param Widget Указатель на виджет.
+ * @param Painter РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QPainter.
+ * @param Option РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QStyleOptionGraphicsItem.
+ * @param Widget РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РІРёРґР¶РµС‚.
  */
 void Circle_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
@@ -142,9 +142,9 @@ void Circle_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Opt
 }
 
 /**
- * @brief Обрабатывает событие перемещения мыши.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё.
  *
- * @param Event Указатель на объект QGraphicsSceneMouseEvent.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QGraphicsSceneMouseEvent.
  */
 void Circle_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -155,9 +155,9 @@ void Circle_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие нажатия кнопки мыши.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
  *
- * @param Event Указатель на объект QGraphicsSceneMouseEvent.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QGraphicsSceneMouseEvent.
  */
 void Circle_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -183,9 +183,9 @@ void Circle_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие отпускания кнопки мыши.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РѕС‚РїСѓСЃРєР°РЅРёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
  *
- * @param Event Указатель на объект QGraphicsSceneMouseEvent.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QGraphicsSceneMouseEvent.
  */
 void Circle_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -202,9 +202,9 @@ void Circle_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие прокрутки колесика мыши.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїСЂРѕРєСЂСѓС‚РєРё РєРѕР»РµСЃРёРєР° РјС‹С€Рё.
  *
- * @param Event Указатель на объект QGraphicsSceneWheelEvent.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QGraphicsSceneWheelEvent.
  */
 void Circle_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
 {
@@ -220,9 +220,9 @@ void Circle_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
 }
 
 /**
- * @brief Устанавливает цвет объекта.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
  *
- * @param Color Новый цвет объекта.
+ * @param Color РќРѕРІС‹Р№ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
  */
 void Circle_Sample::Set_Obj_Color(QColor Color)
 {
@@ -231,10 +231,10 @@ void Circle_Sample::Set_Obj_Color(QColor Color)
 }
 
 /**
- * @brief Проверяет пересечения с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ РїРµСЂРµСЃРµС‡РµРЅРёСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  *
- * @return true, если есть пересечения.
- * @return false, если пересечений нет.
+ * @return true, РµСЃР»Рё РµСЃС‚СЊ РїРµСЂРµСЃРµС‡РµРЅРёСЏ.
+ * @return false, РµСЃР»Рё РїРµСЂРµСЃРµС‡РµРЅРёР№ РЅРµС‚.
  */
 bool Circle_Sample::Check_Coliding()
 {
@@ -250,9 +250,9 @@ bool Circle_Sample::Check_Coliding()
 }
 
 /**
- * @brief Возвращает текущий угол поворота.
+ * @brief Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСѓС‰РёР№ СѓРіРѕР» РїРѕРІРѕСЂРѕС‚Р°.
  *
- * @return int Угол поворота.
+ * @return int РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р°.
  */
 int Circle_Sample::Get_Angle() {
     return Angle;

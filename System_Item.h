@@ -1,6 +1,6 @@
 /**
  * @file System_Item.h
- * @brief Объявление класса System_Item для работы с элементами системы
+ * @brief РћР±СЉСЏРІР»РµРЅРёРµ РєР»Р°СЃСЃР° System_Item РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЌР»РµРјРµРЅС‚Р°РјРё СЃРёСЃС‚РµРјС‹
  */
 
 #pragma once
@@ -10,8 +10,8 @@
 #include "Square_Sample.h"
 #include "Circle_Sample.h"
 
- /**
-  * @brief Класс для работы с элементами системы
+/**
+  * @brief РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЌР»РµРјРµРЅС‚Р°РјРё СЃРёСЃС‚РµРјС‹
   */
 class System_Item : public QWidget
 {
@@ -19,86 +19,86 @@ class System_Item : public QWidget
 
 public:
     /**
-     * @brief Конструктор класса System_Item
-     * @param parent Родительский виджет
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° System_Item
+     * @param parent Р РѕРґРёС‚РµР»СЊСЃРєРёР№ РІРёРґР¶РµС‚
      */
     System_Item(QWidget* parent = nullptr);
 
     /**
-     * @brief Деструктор класса System_Item
+     * @brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° System_Item
      */
     ~System_Item();
 
     /**
-     * @brief Установка параметров элемента
-     * @param Params Параметры
-     * @param Icon Иконка
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° РїР°СЂР°РјРµС‚СЂРѕРІ СЌР»РµРјРµРЅС‚Р°
+     * @param Params РџР°СЂР°РјРµС‚СЂС‹
+     * @param Icon РРєРѕРЅРєР°
      */
     void Set_Params(QStringList Params, QString Icon);
 
     /**
-     * @brief Установка параметров элемента с углом
-     * @param Params Параметры
-     * @param Icon Иконка
-     * @param Angle Угол
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° РїР°СЂР°РјРµС‚СЂРѕРІ СЌР»РµРјРµРЅС‚Р° СЃ СѓРіР»РѕРј
+     * @param Params РџР°СЂР°РјРµС‚СЂС‹
+     * @param Icon РРєРѕРЅРєР°
+     * @param Angle РЈРіРѕР»
      */
     void Set_Params(QStringList Params, QString Icon, int Angle);
 
     /**
-     * @brief Получение параметров элемента
-     * @return Параметры
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ СЌР»РµРјРµРЅС‚Р°
+     * @return РџР°СЂР°РјРµС‚СЂС‹
      */
     QStringList Get_Params();
 
     /**
-     * @brief Установка позиции элемента
-     * @param x Координата x
-     * @param y Координата y
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° РїРѕР·РёС†РёРё СЌР»РµРјРµРЅС‚Р°
+     * @param x РљРѕРѕСЂРґРёРЅР°С‚Р° x
+     * @param y РљРѕРѕСЂРґРёРЅР°С‚Р° y
      */
     void Set_Position(qreal x, qreal y);
 
     /**
-     * @brief Установка режима работы
-     * @param Mode Режим работы
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹
+     * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹
      */
     void Set_Mode(int Mode);
 
     /**
-     * @brief Получение флага удаления
-     * @return Флаг удаления
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ С„Р»Р°РіР° СѓРґР°Р»РµРЅРёСЏ
+     * @return Р¤Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ
      */
     bool Get_Delete_Flag();
 
     /**
-     * @brief Флаг определения квадрата
+     * @brief Р¤Р»Р°Рі РѕРїСЂРµРґРµР»РµРЅРёСЏ РєРІР°РґСЂР°С‚Р°
      */
     bool is_Square = true;
 
     /**
-     * @brief Цвет элемента
+     * @brief Р¦РІРµС‚ СЌР»РµРјРµРЅС‚Р°
      */
     QColor Color;
 
     /**
-     * @brief Загрузка элемента
+     * @brief Р—Р°РіСЂСѓР·РєР° СЌР»РµРјРµРЅС‚Р°
      */
     qreal Workload;
 
     /**
-     * @brief Образец квадрата
+     * @brief РћР±СЂР°Р·РµС† РєРІР°РґСЂР°С‚Р°
      */
     Square_Sample* Square;
 
     /**
-     * @brief Образец круга
+     * @brief РћР±СЂР°Р·РµС† РєСЂСѓРіР°
      */
     Circle_Sample* Circle;
 
 private:
-    QStringList Params; ///< Параметры
-    Ui::Sistem_Item sys; ///< Интерфейс
-    void Status_Color(); ///< Цвет статуса
-    void Set_Workload(); ///< Установка загрузки
+    QStringList Params; ///< РџР°СЂР°РјРµС‚СЂС‹
+    Ui::Sistem_Item sys; ///< РРЅС‚РµСЂС„РµР№СЃ
+    void Status_Color(); ///< Р¦РІРµС‚ СЃС‚Р°С‚СѓСЃР°
+    void Set_Workload(); ///< РЈСЃС‚Р°РЅРѕРІРєР° Р·Р°РіСЂСѓР·РєРё
 
 public slots:
     void Set_Firm();

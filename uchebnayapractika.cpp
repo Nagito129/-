@@ -1,15 +1,15 @@
 /**
  * @file uchebnayapractika.cpp
- * @brief Реализация методов класса uchebnayapractika
+ * @brief Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР° uchebnayapractika
  */
 
 #include <QKeyEvent>
 
 #include "uchebnayapractika.h"
 
- /**
-  * @brief Конструктор класса uchebnayapractika
-  * @param parent Указатель на родительский виджет
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° uchebnayapractika
+  * @param parent РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ РІРёРґР¶РµС‚
   */
 uchebnayapractika::uchebnayapractika(QWidget *parent)
     : QMainWindow(parent)
@@ -18,55 +18,55 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
 
     ui.cmd_Scene->append("=== Program is running ===\n");
 
-    // Косметические настройки интерфейса:
+    // РљРѕСЃРјРµС‚РёС‡РµСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё РёРЅС‚РµСЂС„РµР№СЃР°:
     setWindowTitle("NS Editor");
-    setWindowIcon(QIcon("Textures/Icons/Main Icons/NSE_Icon.png"));
+    setWindowIcon(QIcon("../../Textures/Icons/Main Icons/NSE_Icon.png"));
 
     this->setGeometry(Screen_W / 2, Screen_H / 2, 1200, 700);
     this->setMinimumSize(1000, 712);
 
-    // Установка размеров кнопок и их иконок
+    // РЈСЃС‚Р°РЅРѕРІРєР° СЂР°Р·РјРµСЂРѕРІ РєРЅРѕРїРѕРє Рё РёС… РёРєРѕРЅРѕРє
     ui.Save_Button->setFixedSize(30, 30);
     ui.Open_File_Button->setFixedSize(30, 30);
     ui.Edit_Button->setFixedSize(30, 30);
     ui.Info_Button->setFixedSize(30, 30);
     ui.Delete_Button->setFixedSize(30, 30);
-    
-    ui.Save_Button->setIcon(QIcon("Textures/Icons/Main Icons/Save_btn_Icon.png"));
-    ui.Open_File_Button->setIcon(QIcon("Textures/Icons/Main Icons/Open_btn_Icon.png"));
-    ui.Edit_Button->setIcon(QIcon("Textures/Icons/Main Icons/Editor_btn_Icon.png"));
-    ui.Info_Button->setIcon(QIcon("Textures/Icons/Main Icons/Info_btn_Icon.png"));
-    ui.Delete_Button->setIcon(QIcon("Textures/Icons/Main Icons/Delete_btn_Icon.png"));
+
+    ui.Save_Button->setIcon(QIcon("../../Textures/Icons/Main Icons/Save_btn_Icon.png"));
+    ui.Open_File_Button->setIcon(QIcon("../../Textures/Icons/Main Icons/Open_btn_Icon.png"));
+    ui.Edit_Button->setIcon(QIcon("../../Textures/Icons/Main Icons/Editor_btn_Icon.png"));
+    ui.Info_Button->setIcon(QIcon("../../Textures/Icons/Main Icons/Info_btn_Icon.png"));
+    ui.Delete_Button->setIcon(QIcon("../../Textures/Icons/Main Icons/Delete_btn_Icon.png"));
 
     ui.TDelete_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.TDelete_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Delete_Icon.png"));
+    ui.TDelete_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Delete_Icon.png"));
     ui.TAdd_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.TAdd_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Add_Icon.png"));
+    ui.TAdd_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Add_Icon.png"));
     ui.TMove_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.TMove_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Move_Icon.png"));
+    ui.TMove_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Move_Icon.png"));
 
     ui.Wall_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.Wall_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Wall_Icon.png"));
+    ui.Wall_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Wall_Icon.png"));
     ui.Stairs_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.Stairs_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Stairs_Icon.png"));
+    ui.Stairs_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Stairs_Icon.png"));
     ui.Door_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.Door_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Door_Icon.png"));
+    ui.Door_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Door_Icon.png"));
     ui.Window_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.Window_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Window_Icon.png"));
+    ui.Window_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Window_Icon.png"));
     ui.Square_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.Square_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Square_Icon.png"));
+    ui.Square_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Square_Icon.png"));
     ui.Circle_Button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    ui.Circle_Button->setIcon(QIcon("Textures/Icons/Tools Icons/Circle_Icon.png"));
+    ui.Circle_Button->setIcon(QIcon("../../Textures/Icons/Tools Icons/Circle_Icon.png"));
 
     ui.verticalLayout_6->setDirection(QBoxLayout::BottomToTop);
 
-    // Скрытие некоторых элементов интерфейса
+    // РЎРєСЂС‹С‚РёРµ РЅРµРєРѕС‚РѕСЂС‹С… СЌР»РµРјРµРЅС‚РѕРІ РёРЅС‚РµСЂС„РµР№СЃР°
     ui.Information->hide();
     ui.Editor->hide();
     ui.Add_Widget->hide();
     ui.Console->hide();
 
-    // Подключение обработчиков событий для кнопок
+    // РџРѕРґРєР»СЋС‡РµРЅРёРµ РѕР±СЂР°Р±РѕС‚С‡РёРєРѕРІ СЃРѕР±С‹С‚РёР№ РґР»СЏ РєРЅРѕРїРѕРє
     connect(ui.Edit_Button, SIGNAL(pressed()), this, SLOT(Tools_Widget()));
     connect(ui.Info_Button, SIGNAL(pressed()), this, SLOT(Info_Widget()));
     connect(ui.Open_File_Button, SIGNAL(pressed()), this, SLOT(Open()));
@@ -93,7 +93,7 @@ uchebnayapractika::uchebnayapractika(QWidget *parent)
 }
 
 /**
- * @brief Деструктор класса uchebnayapractika
+ * @brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° uchebnayapractika
  */
 uchebnayapractika::~uchebnayapractika()
 {
@@ -101,7 +101,7 @@ uchebnayapractika::~uchebnayapractika()
 }
 
 /**
- * @brief Отображение/скрытие виджета с информацией
+ * @brief РћС‚РѕР±СЂР°Р¶РµРЅРёРµ/СЃРєСЂС‹С‚РёРµ РІРёРґР¶РµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№
  */
 void uchebnayapractika::Info_Widget()
 {
@@ -120,7 +120,7 @@ void uchebnayapractika::Info_Widget()
 }
 
 /**
- * @brief Отображение/скрытие виджета с инструментами редактирования
+ * @brief РћС‚РѕР±СЂР°Р¶РµРЅРёРµ/СЃРєСЂС‹С‚РёРµ РІРёРґР¶РµС‚Р° СЃ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
  */
 void uchebnayapractika::Tools_Widget() {
     if (!ui.Editor->isHidden()) {
@@ -137,7 +137,7 @@ void uchebnayapractika::Tools_Widget() {
 }
 
 /**
- * @brief Отображение/скрытие виджета для добавления элементов
+ * @brief РћС‚РѕР±СЂР°Р¶РµРЅРёРµ/СЃРєСЂС‹С‚РёРµ РІРёРґР¶РµС‚Р° РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ
  */
 void uchebnayapractika::Add_Widget()
 {
@@ -171,8 +171,8 @@ void uchebnayapractika::Pout(QString String)
 
 
 /**
- * @brief Обработка нажатия клавиш
- * @param e Указатель на объект события клавиатуры
+ * @brief РћР±СЂР°Р±РѕС‚РєР° РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€
+ * @param e РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ СЃРѕР±С‹С‚РёСЏ РєР»Р°РІРёР°С‚СѓСЂС‹
  */
 void uchebnayapractika::keyPressEvent(QKeyEvent* e)
 {
@@ -239,7 +239,7 @@ void uchebnayapractika::keyPressEvent(QKeyEvent* e)
 
 
 /**
- * @brief Удаление всех элементов сцены
+ * @brief РЈРґР°Р»РµРЅРёРµ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ СЃС†РµРЅС‹
  */
 void uchebnayapractika::Delete_All()
 {
@@ -257,7 +257,7 @@ void uchebnayapractika::Delete_All()
 }
 
 /**
- * @brief Добавление квадрата на сцену
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ РєРІР°РґСЂР°С‚Р° РЅР° СЃС†РµРЅСѓ
  */
 void uchebnayapractika::Add_Square()
 {
@@ -265,7 +265,7 @@ void uchebnayapractika::Add_Square()
 }
 
 /**
- * @brief Добавление круга на сцену
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ РєСЂСѓРіР° РЅР° СЃС†РµРЅСѓ
  */
 void uchebnayapractika::Add_Circle()
 {
@@ -273,7 +273,7 @@ void uchebnayapractika::Add_Circle()
 }
 
 /**
- * @brief Добавление стены на сцену
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚РµРЅС‹ РЅР° СЃС†РµРЅСѓ
  */
 void uchebnayapractika::Add_Wall()
 {
@@ -288,7 +288,7 @@ void uchebnayapractika::Add_Wall()
 
 
 /**
- * @brief Добавление окна на сцену
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ РѕРєРЅР° РЅР° СЃС†РµРЅСѓ
  */
 void uchebnayapractika::Add_Window()
 {
@@ -302,7 +302,7 @@ void uchebnayapractika::Add_Window()
 }
 
 /**
- * @brief Добавление двери на сцену
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ РґРІРµСЂРё РЅР° СЃС†РµРЅСѓ
  */
 void uchebnayapractika::Add_Door()
 {
@@ -316,7 +316,7 @@ void uchebnayapractika::Add_Door()
 }
 
 /**
- * @brief Добавление лестницы на сцену
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ Р»РµСЃС‚РЅРёС†С‹ РЅР° СЃС†РµРЅСѓ
  */
 void uchebnayapractika::Add_Stairs()
 {
@@ -330,9 +330,9 @@ void uchebnayapractika::Add_Stairs()
 }
 
 /**
- * @brief Добавление элемента на сцену
- * @param Path Путь к иконке элемента
- * @param Form Форма элемента
+ * @brief Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РЅР° СЃС†РµРЅСѓ
+ * @param Path РџСѓС‚СЊ Рє РёРєРѕРЅРєРµ СЌР»РµРјРµРЅС‚Р°
+ * @param Form Р¤РѕСЂРјР° СЌР»РµРјРµРЅС‚Р°
  */
 void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)///////////////////////////////////////////////////
 {
@@ -352,11 +352,11 @@ void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)////////////
     }
 
     Item = new System_Item;
-    
+
     if (Form == CIRCLE) {
         Item->is_Square = false;
     }
-    
+
     Item->Set_Params(Params, Path);
     ui.verticalLayout_6->addWidget(Item);
     Items.append(Item);
@@ -373,8 +373,8 @@ void uchebnayapractika::Add_Sys_Item(QString Path, System_Form Form)////////////
 }
 
 /**
- * @brief Установка режима для всех элементов и частей сцены
- * @param Mode Режим
+ * @brief РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° РґР»СЏ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ Рё С‡Р°СЃС‚РµР№ СЃС†РµРЅС‹
+ * @param Mode Р РµР¶РёРј
  */
 void uchebnayapractika::Set_Items_And_Parts_Mode(int Mode)
 {
@@ -387,7 +387,7 @@ void uchebnayapractika::Set_Items_And_Parts_Mode(int Mode)
 }
 
 /**
- * @brief Удаление выбранных элементов
+ * @brief РЈРґР°Р»РµРЅРёРµ РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
  */
 void uchebnayapractika::Delete()
 {
@@ -396,11 +396,11 @@ void uchebnayapractika::Delete()
     }
     Mode = M_DELETE;
     Set_Items_And_Parts_Mode(3);
-    
+
 }
 
 /**
- * @brief Перемещение выбранных элементов
+ * @brief РџРµСЂРµРјРµС‰РµРЅРёРµ РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
  */
 void uchebnayapractika::Move()
 {
@@ -412,11 +412,11 @@ void uchebnayapractika::Move()
 }
 
 /**
- * @brief Открытие файла проекта и загрузка данных из него
+ * @brief РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° РїСЂРѕРµРєС‚Р° Рё Р·Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С… РёР· РЅРµРіРѕ
  */
 void uchebnayapractika::Open()
 {
-    File_Name = QFileDialog::getOpenFileName(this, "Open a file", "Projects/", "(*.xml)");
+    File_Name = QFileDialog::getOpenFileName(this, "Open a file", "../../Saves", "(*.xml)");
     QFile File(File_Name);
 
     if (!File.open(QFile::ReadOnly | QFile::Text)) {
@@ -515,7 +515,7 @@ void uchebnayapractika::Open()
 }
 
 /**
- * @brief Сохранение файла проекта
+ * @brief РЎРѕС…СЂР°РЅРµРЅРёРµ С„Р°Р№Р»Р° РїСЂРѕРµРєС‚Р°
  */
 void uchebnayapractika::Save()
 {
@@ -525,7 +525,7 @@ void uchebnayapractika::Save()
     }
 
     if (File_Name.isEmpty()) {
-        File_Name = QFileDialog::getSaveFileName(this, "Save file", "C\\", "XML File (*.xml)");
+        File_Name = QFileDialog::getSaveFileName(this, "Save file", "../../Saves", "XML File (*.xml)");
         QFile File(File_Name);
         if (!File.open(QFile::WriteOnly | QFile::Text)) {
             QMessageBox::warning(this, "Error", "File not open\n" + File.errorString());
@@ -569,8 +569,8 @@ void uchebnayapractika::Save()
 }
 
 /**
- * @brief Запись данных о элементах и частях сцены в файл
- * @param File Файл для записи данных
+ * @brief Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С… Рѕ СЌР»РµРјРµРЅС‚Р°С… Рё С‡Р°СЃС‚СЏС… СЃС†РµРЅС‹ РІ С„Р°Р№Р»
+ * @param File Р¤Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С…
  */
 void uchebnayapractika::Write_In_File(QFile& File) {
     QXmlStreamWriter Xml(&File);

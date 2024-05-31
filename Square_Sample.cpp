@@ -1,16 +1,16 @@
 /**
  * @file Square_Sample.cpp
- * @brief Реализация класса Square_Sample для работы с объектом "Квадрат".
+ * @brief Р РµР°Р»РёР·Р°С†РёСЏ РєР»Р°СЃСЃР° Square_Sample РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±СЉРµРєС‚РѕРј "РљРІР°РґСЂР°С‚".
  */
 
 #include "Square_Sample.h"
 
- /**
-  * @brief Конструктор класса Square_Sample с параметрами.
-  * @param Name Имя квадрата.
-  * @param Length Длина квадрата.
-  * @param Width Ширина квадрата.
-  * @param Angle Угол поворота квадрата.
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Square_Sample СЃ РїР°СЂР°РјРµС‚СЂР°РјРё.
+  * @param Name РРјСЏ РєРІР°РґСЂР°С‚Р°.
+  * @param Length Р”Р»РёРЅР° РєРІР°РґСЂР°С‚Р°.
+  * @param Width РЁРёСЂРёРЅР° РєРІР°РґСЂР°С‚Р°.
+  * @param Angle РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РєРІР°РґСЂР°С‚Р°.
   */
 Square_Sample::Square_Sample(QString Name, qreal Length, qreal Width, qreal Angle)
 {
@@ -26,10 +26,10 @@ Square_Sample::Square_Sample(QString Name, qreal Length, qreal Width, qreal Angl
 }
 
 /**
- * @brief Конструктор класса Square_Sample без угла поворота.
- * @param Name Имя квадрата.
- * @param Length Длина квадрата.
- * @param Width Ширина квадрата.
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Square_Sample Р±РµР· СѓРіР»Р° РїРѕРІРѕСЂРѕС‚Р°.
+ * @param Name РРјСЏ РєРІР°РґСЂР°С‚Р°.
+ * @param Length Р”Р»РёРЅР° РєРІР°РґСЂР°С‚Р°.
+ * @param Width РЁРёСЂРёРЅР° РєРІР°РґСЂР°С‚Р°.
  */
 Square_Sample::Square_Sample(QString Name, qreal Length, qreal Width)
 {
@@ -42,9 +42,9 @@ Square_Sample::Square_Sample(QString Name, qreal Length, qreal Width)
 }
 
 /**
- * @brief Устанавливает рабочую нагрузку и цвет квадрата.
- * @param Color Цвет квадрата.
- * @param Workload Рабочая нагрузка.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂР°Р±РѕС‡СѓСЋ РЅР°РіСЂСѓР·РєСѓ Рё С†РІРµС‚ РєРІР°РґСЂР°С‚Р°.
+ * @param Color Р¦РІРµС‚ РєРІР°РґСЂР°С‚Р°.
+ * @param Workload Р Р°Р±РѕС‡Р°СЏ РЅР°РіСЂСѓР·РєР°.
  */
 void Square_Sample::Set_Workload(QColor Color, qreal Workload)
 {
@@ -54,8 +54,8 @@ void Square_Sample::Set_Workload(QColor Color, qreal Workload)
 }
 
 /**
- * @brief Проверяет возможность появления квадрата без столкновений.
- * @return true, если квадрат не сталкивается с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕСЏРІР»РµРЅРёСЏ РєРІР°РґСЂР°С‚Р° Р±РµР· СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№.
+ * @return true, РµСЃР»Рё РєРІР°РґСЂР°С‚ РЅРµ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Square_Sample::Spawn_Accept()
 {
@@ -71,8 +71,8 @@ bool Square_Sample::Spawn_Accept()
 }
 
 /**
- * @brief Устанавливает режим работы квадрата.
- * @param Mode Режим работы (0 - OFF, 1 - MOVE, 3 - DELETE).
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹ РєРІР°РґСЂР°С‚Р°.
+ * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹ (0 - OFF, 1 - MOVE, 3 - DELETE).
  */
 void Square_Sample::Set_Mode(int Mode)
 {
@@ -88,8 +88,8 @@ void Square_Sample::Set_Mode(int Mode)
 }
 
 /**
- * @brief Получает флаг удаления квадрата.
- * @return true, если квадрат подлежит удалению.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ С„Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ РєРІР°РґСЂР°С‚Р°.
+ * @return true, РµСЃР»Рё РєРІР°РґСЂР°С‚ РїРѕРґР»РµР¶РёС‚ СѓРґР°Р»РµРЅРёСЋ.
  */
 bool Square_Sample::Get_Delete_Flag()
 {
@@ -97,8 +97,8 @@ bool Square_Sample::Get_Delete_Flag()
 }
 
 /**
- * @brief Получает ограничивающий прямоугольник квадрата.
- * @return Ограничивающий прямоугольник.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ РѕРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РєРІР°РґСЂР°С‚Р°.
+ * @return РћРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє.
  */
 QRectF Square_Sample::boundingRect() const
 {
@@ -106,10 +106,10 @@ QRectF Square_Sample::boundingRect() const
 }
 
 /**
- * @brief Отрисовывает квадрат.
- * @param Painter Указатель на объект QPainter.
- * @param Option Указатель на опции стиля.
- * @param Widget Указатель на виджет.
+ * @brief РћС‚СЂРёСЃРѕРІС‹РІР°РµС‚ РєРІР°РґСЂР°С‚.
+ * @param Painter РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ QPainter.
+ * @param Option РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕРїС†РёРё СЃС‚РёР»СЏ.
+ * @param Widget РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РІРёРґР¶РµС‚.
  */
 void Square_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget)
 {
@@ -121,8 +121,8 @@ void Square_Sample::paint(QPainter* Painter, const QStyleOptionGraphicsItem* Opt
 }
 
 /**
- * @brief Обрабатывает событие перемещения мыши.
- * @param Event Указатель на событие QGraphicsSceneMouseEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneMouseEvent.
  */
 void Square_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -133,8 +133,8 @@ void Square_Sample::mouseMoveEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие нажатия кнопки мыши.
- * @param Event Указатель на событие QGraphicsSceneMouseEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneMouseEvent.
  */
 void Square_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -162,8 +162,8 @@ void Square_Sample::mousePressEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие отпускания кнопки мыши.
- * @param Event Указатель на событие QGraphicsSceneMouseEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РѕС‚РїСѓСЃРєР°РЅРёСЏ РєРЅРѕРїРєРё РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneMouseEvent.
  */
 void Square_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 {
@@ -181,8 +181,8 @@ void Square_Sample::mouseReleaseEvent(QGraphicsSceneMouseEvent* Event)
 }
 
 /**
- * @brief Обрабатывает событие прокрутки колесика мыши.
- * @param Event Указатель на событие QGraphicsSceneWheelEvent.
+ * @brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРѕР±С‹С‚РёРµ РїСЂРѕРєСЂСѓС‚РєРё РєРѕР»РµСЃРёРєР° РјС‹С€Рё.
+ * @param Event РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕР±С‹С‚РёРµ QGraphicsSceneWheelEvent.
  */
 void Square_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
 {
@@ -198,8 +198,8 @@ void Square_Sample::wheelEvent(QGraphicsSceneWheelEvent* Event)
 }
 
 /**
- * @brief Устанавливает цвет объекта.
- * @param Color Новый цвет объекта.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
+ * @param Color РќРѕРІС‹Р№ С†РІРµС‚ РѕР±СЉРµРєС‚Р°.
  */
 void Square_Sample::Set_Obj_Color(QColor Color)
 {
@@ -208,8 +208,8 @@ void Square_Sample::Set_Obj_Color(QColor Color)
 }
 
 /**
- * @brief Проверяет столкновение объекта с другими объектами.
- * @return true, если объект сталкивается с другими объектами.
+ * @brief РџСЂРѕРІРµСЂСЏРµС‚ СЃС‚РѕР»РєРЅРѕРІРµРЅРёРµ РѕР±СЉРµРєС‚Р° СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
+ * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ СЃС‚Р°Р»РєРёРІР°РµС‚СЃСЏ СЃ РґСЂСѓРіРёРјРё РѕР±СЉРµРєС‚Р°РјРё.
  */
 bool Square_Sample::Check_Coliding()
 {
@@ -225,8 +225,8 @@ bool Square_Sample::Check_Coliding()
 }
 
 /**
- * @brief Получает угол поворота объекта.
- * @return Угол поворота.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ СѓРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РѕР±СЉРµРєС‚Р°.
+ * @return РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р°.
  */
 int Square_Sample::Get_Angle() {
     return Angle;

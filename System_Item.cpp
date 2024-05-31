@@ -1,222 +1,222 @@
 #include "System_Item.h"
 
 /**
- * @brief Êîíñòðóêòîð êëàññà System_Item
- * @param parent Óêàçàòåëü íà ðîäèòåëüñêèé âèäæåò
+ * @brief ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ»Ð°ÑÑÐ° System_Item
+ * @param parent Ð£ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ð° Ñ€Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ð¹ Ð²Ð¸Ð´Ð¶ÐµÑ‚
  */
 System_Item::System_Item(QWidget* parent)
-	: QWidget(parent)
+    : QWidget(parent)
 {
-	sys.setupUi(this);
-	sys.Info->hide();
-	sys.Position->hide();
-	this->setFixedSize(300, 25);
+    sys.setupUi(this);
+    sys.Info->hide();
+    sys.Position->hide();
+    this->setFixedSize(300, 25);
 
-	connect(sys.Item_Name, SIGNAL(pressed()), this, SLOT(Info()));
-	connect(sys.Firm_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Firm()));
-	connect(sys.Seria_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Seria()));
-	connect(sys.Weight_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Weidh()));
+    connect(sys.Item_Name, SIGNAL(pressed()), this, SLOT(Info()));
+    connect(sys.Firm_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Firm()));
+    connect(sys.Seria_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Seria()));
+    connect(sys.Weight_Edit, SIGNAL(returnPressed()), this, SLOT(Set_Weidh()));
 }
 
 /**
- * @brief Äåñòðóêòîð êëàññà System_Item
+ * @brief Ð”ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ»Ð°ÑÑÐ° System_Item
  */
 System_Item::~System_Item()
 {
-	if (is_Square) {
-		delete Square;
-	}
-	else {
-		delete Circle;
-	}
+    if (is_Square) {
+        delete Square;
+    }
+    else {
+        delete Circle;
+    }
 }
 
 /**
- * @brief Óñòàíîâèòü ïàðàìåòðû ýëåìåíòà
- * @param Params Ñïèñîê ïàðàìåòðîâ
- * @param Icon Ïóòü ê èêîíêå
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
+ * @param Params Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð²
+ * @param Icon ÐŸÑƒÑ‚ÑŒ Ðº Ð¸ÐºÐ¾Ð½ÐºÐµ
  */
 void System_Item::Set_Params(QStringList Params, QString Icon)
 {
-	this->Params = Params;
-	sys.Item_Name->setText(Params[0]);
-	sys.Item_Name->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-	sys.Item_Name->setIcon(QIcon("Textures/Icons/Tools Icons/" + Icon));
-	sys.Firm_Edit->setText(Params[1]);
-	sys.Seria_Edit->setText(Params[2]);
-	sys.Height_L->setText(Params[3]);
-	sys.Width_L->setText(Params[4]);
-	sys.Length_L->setText(Params[5]);
-	sys.Weight_Edit->setText(Params[6]);
-	sys.X_pos->setText(Params[7]);
-	sys.Y_pos->setText(Params[8]);
+    this->Params = Params;
+    sys.Item_Name->setText(Params[0]);
+    sys.Item_Name->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    sys.Item_Name->setIcon(QIcon("../../Textures/Icons/Tools Icons/" + Icon));
+    sys.Firm_Edit->setText(Params[1]);
+    sys.Seria_Edit->setText(Params[2]);
+    sys.Height_L->setText(Params[3]);
+    sys.Width_L->setText(Params[4]);
+    sys.Length_L->setText(Params[5]);
+    sys.Weight_Edit->setText(Params[6]);
+    sys.X_pos->setText(Params[7]);
+    sys.Y_pos->setText(Params[8]);
 
-	if (is_Square) {
-		Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
-	}
-	else {
-		Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
-	}
-	Set_Workload();
+    if (is_Square) {
+        Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
+    }
+    else {
+        Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat());
+    }
+    Set_Workload();
 }
 
 /**
- * @brief Óñòàíîâèòü ïàðàìåòðû ýëåìåíòà ñ óãëîì ïîâîðîòà
- * @param Params Ñïèñîê ïàðàìåòðîâ
- * @param Icon Ïóòü ê èêîíêå
- * @param Angle Óãîë ïîâîðîòà
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ñ ÑƒÐ³Ð»Ð¾Ð¼ Ð¿Ð¾Ð²Ð¾Ñ€Ð¾Ñ‚Ð°
+ * @param Params Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð²
+ * @param Icon ÐŸÑƒÑ‚ÑŒ Ðº Ð¸ÐºÐ¾Ð½ÐºÐµ
+ * @param Angle Ð£Ð³Ð¾Ð» Ð¿Ð¾Ð²Ð¾Ñ€Ð¾Ñ‚Ð°
  */
 void System_Item::Set_Params(QStringList Params, QString Icon, int Angle)
 {
-	this->Params = Params;
-	sys.Item_Name->setText(Params[0]);
-	sys.Item_Name->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-	sys.Item_Name->setIcon(QIcon("Textures/Icons/Tools Icons/" + Icon));
-	sys.Firm_Edit->setText(Params[1]);
-	sys.Seria_Edit->setText(Params[2]);
-	sys.Height_L->setText(Params[3]);
-	sys.Width_L->setText(Params[4]);
-	sys.Length_L->setText(Params[5]);
-	sys.Weight_Edit->setText(Params[6]);
-	sys.X_pos->setText(Params[7]);
-	sys.Y_pos->setText(Params[8]);
+    this->Params = Params;
+    sys.Item_Name->setText(Params[0]);
+    sys.Item_Name->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    sys.Item_Name->setIcon(QIcon("../../Textures/Icons/Tools Icons/" + Icon));
+    sys.Firm_Edit->setText(Params[1]);
+    sys.Seria_Edit->setText(Params[2]);
+    sys.Height_L->setText(Params[3]);
+    sys.Width_L->setText(Params[4]);
+    sys.Length_L->setText(Params[5]);
+    sys.Weight_Edit->setText(Params[6]);
+    sys.X_pos->setText(Params[7]);
+    sys.Y_pos->setText(Params[8]);
 
-	if (is_Square) {
-		Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat(), Angle);
-	}
-	else {
-		Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat(), Angle);
-	}
-	Set_Workload();
+    if (is_Square) {
+        Square = new Square_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat(), Angle);
+    }
+    else {
+        Circle = new Circle_Sample(Params[0], Params[5].toFloat(), Params[4].toFloat(), Angle);
+    }
+    Set_Workload();
 }
 
 /**
- * @brief Ïîëó÷èòü ïàðàìåòðû ýëåìåíòà
- * @return Ñïèñîê ïàðàìåòðîâ
+ * @brief ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
+ * @return Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð²
  */
 QStringList System_Item::Get_Params()
 {
-	return Params;
+    return Params;
 }
 
 /**
- * @brief Óñòàíîâèòü ïîçèöèþ ýëåìåíòà
- * @param x Êîîðäèíàòà X
- * @param y Êîîðäèíàòà Y
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
+ * @param x ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð° X
+ * @param y ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð° Y
  */
 void System_Item::Set_Position(qreal x, qreal y)
 {
-	sys.X_pos->setText(QString::number(x));
-	sys.Y_pos->setText(QString::number(y));
+    sys.X_pos->setText(QString::number(x));
+    sys.Y_pos->setText(QString::number(y));
 }
 
 /**
- * @brief Óñòàíîâèòü ðåæèì ýëåìåíòà
- * @param Mode Ðåæèì
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ€ÐµÐ¶Ð¸Ð¼ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
+ * @param Mode Ð ÐµÐ¶Ð¸Ð¼
  */
 void System_Item::Set_Mode(int Mode)
 {
-	if (is_Square) {
-		Square->Set_Mode(Mode);
-	}
-	else
-	{
-		Circle->Set_Mode(Mode);
-	}
+    if (is_Square) {
+        Square->Set_Mode(Mode);
+    }
+    else
+    {
+        Circle->Set_Mode(Mode);
+    }
 }
 
 /**
- * @brief Ïîëó÷èòü ôëàã óäàëåíèÿ ýëåìåíòà
- * @return Ôëàã óäàëåíèÿ
+ * @brief ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ñ„Ð»Ð°Ð³ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
+ * @return Ð¤Ð»Ð°Ð³ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ
  */
 bool System_Item::Get_Delete_Flag()
 {
-	if (is_Square) {
-		return Square->Get_Delete_Flag();
-	}
-	else {
-		return Circle->Get_Delete_Flag();
-	}
+    if (is_Square) {
+        return Square->Get_Delete_Flag();
+    }
+    else {
+        return Circle->Get_Delete_Flag();
+    }
 }
 
 /**
- * @brief Óñòàíîâèòü ôèðìó ýëåìåíòà
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ„Ð¸Ñ€Ð¼Ñƒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
  */
 void System_Item::Set_Firm()
 {
-	Params[1] = sys.Firm_Edit->text();
-	Set_Workload();
+    Params[1] = sys.Firm_Edit->text();
+    Set_Workload();
 }
 
 /**
- * @brief Óñòàíîâèòü ñåðèþ ýëåìåíòà
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ ÑÐµÑ€Ð¸ÑŽ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
  */
 void System_Item::Set_Seria()
 {
-	Params[2] = sys.Seria_Edit->text();
-	Set_Workload();
+    Params[2] = sys.Seria_Edit->text();
+    Set_Workload();
 }
 
 /**
- * @brief Óñòàíîâèòü âåñ ýëåìåíòà
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð²ÐµÑ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
  */
 void System_Item::Set_Weidh()
 {
-	Params[6] = sys.Weight_Edit->text();
-	Set_Workload();
+    Params[6] = sys.Weight_Edit->text();
+    Set_Workload();
 }
 
 /**
- * @brief Óñòàíîâèòü çàãðóçêó ýëåìåíòà
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÑƒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
  */
 void System_Item::Set_Workload()
 {
-	sys.Workload_Bar->setValue(rand() % 101);
-	Workload = sys.Workload_Bar->value();
-	Status_Color();
-	if (is_Square) {
-		Square->Set_Workload(Color, Workload);
-	}
-	else {
-		Circle->Set_Workload(Color, Workload);
-	}
+    sys.Workload_Bar->setValue(rand() % 101);
+    Workload = sys.Workload_Bar->value();
+    Status_Color();
+    if (is_Square) {
+        Square->Set_Workload(Color, Workload);
+    }
+    else {
+        Circle->Set_Workload(Color, Workload);
+    }
 }
 
 /**
- * @brief Óñòàíîâèòü öâåò ñòàòóñà ýëåìåíòà
+ * @brief Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ†Ð²ÐµÑ‚ ÑÑ‚Ð°Ñ‚ÑƒÑÐ° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
  */
 void System_Item::Status_Color()
 {
-	Color.setRgb(84 + Workload, 204 - Workload, 83);
-	sys.Item_Name->setStyleSheet("color: rgb(10, 10, 10);\n"
-		"text-align: bottom;\n"
-		"background-color: rgb(" + QString::number(qRed(Color.rgb()))
-		+ ", " + QString::number(qGreen(Color.rgb())) + ", 83);");
+    Color.setRgb(84 + Workload, 204 - Workload, 83);
+    sys.Item_Name->setStyleSheet("color: rgb(10, 10, 10);\n"
+                                 "text-align: bottom;\n"
+                                 "background-color: rgb(" + QString::number(qRed(Color.rgb()))
+                                 + ", " + QString::number(qGreen(Color.rgb())) + ", 83);");
 
-	sys.Workload_Bar->setStyleSheet("QProgressBar\n"
-		"{\n"
-		"background-color: rgb(255, 255, 255);\n"
-		"}\n"
-		"QProgressBar::chunk\n"
-		"{\n"
-		"background-color: rgb(" + QString::number(qRed(Color.rgb()))
-		+ ", " + QString::number(qGreen(Color.rgb())) + ", 83);\n"
-		"}\n");
+    sys.Workload_Bar->setStyleSheet("QProgressBar\n"
+                                    "{\n"
+                                    "background-color: rgb(255, 255, 255);\n"
+                                    "}\n"
+                                    "QProgressBar::chunk\n"
+                                    "{\n"
+                                    "background-color: rgb(" + QString::number(qRed(Color.rgb()))
+                                    + ", " + QString::number(qGreen(Color.rgb())) + ", 83);\n"
+                                                                                    "}\n");
 }
 
 /**
- * @brief Ïîêàçàòü/ñêðûòü èíôîðìàöèþ îá ýëåìåíòå
+ * @brief ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ/ÑÐºÑ€Ñ‹Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾Ð± ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ðµ
  */
 void System_Item::Info()
 {
-	if (sys.Info->isHidden()) {
-		sys.Info->show();
-		sys.Position->show();
-		this->setFixedHeight(275);
-	}
-	else {
-		sys.Info->hide();
-		sys.Position->hide();
-		this->setFixedHeight(25);
-	}
+    if (sys.Info->isHidden()) {
+        sys.Info->show();
+        sys.Position->show();
+        this->setFixedHeight(275);
+    }
+    else {
+        sys.Info->hide();
+        sys.Position->hide();
+        this->setFixedHeight(25);
+    }
 }

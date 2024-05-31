@@ -1,43 +1,43 @@
 /**
  * @file Params_Window.cpp
- * @brief Реализация класса Params_Window для работы с окном параметров.
+ * @brief Р РµР°Р»РёР·Р°С†РёСЏ РєР»Р°СЃСЃР° Params_Window РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРєРЅРѕРј РїР°СЂР°РјРµС‚СЂРѕРІ.
  */
 
 #include "Params_Window.h"
 
- /**
-  * @brief Конструктор класса Params_Window.
-  * @param parent Указатель на родительский виджет.
+/**
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Params_Window.
+  * @param parent РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ РІРёРґР¶РµС‚.
   */
 Params_Window::Params_Window(QWidget* parent)
     : QDialog(parent)
 {
-    _ui.setupUi(this); ///< Инициализация пользовательского интерфейса.
-    this->setFixedSize(300, 200); ///< Установка фиксированного размера окна.
-    this->setWindowFlags(windowFlags() & ~Qt::WindowCloseButtonHint); ///< Удаление кнопки закрытия окна.
-    this->setWindowIcon(QIcon("Textures/Icons/Tools Icons/Params_Icon.png")); ///< Установка иконки окна.
-    this->setWindowTitle("System Parameters"); ///< Установка заголовка окна.
+    _ui.setupUi(this); ///< РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°.
+    this->setFixedSize(300, 200); ///< РЈСЃС‚Р°РЅРѕРІРєР° С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕРіРѕ СЂР°Р·РјРµСЂР° РѕРєРЅР°.
+    this->setWindowFlags(windowFlags() & ~Qt::WindowCloseButtonHint); ///< РЈРґР°Р»РµРЅРёРµ РєРЅРѕРїРєРё Р·Р°РєСЂС‹С‚РёСЏ РѕРєРЅР°.
+    this->setWindowIcon(QIcon("../../Textures/Icons/Tools Icons/Params_Icon.png")); ///< РЈСЃС‚Р°РЅРѕРІРєР° РёРєРѕРЅРєРё РѕРєРЅР°.
+    this->setWindowTitle("System Parameters"); ///< РЈСЃС‚Р°РЅРѕРІРєР° Р·Р°РіРѕР»РѕРІРєР° РѕРєРЅР°.
 
-    // Установка валидаторов для полей ввода.
+    // РЈСЃС‚Р°РЅРѕРІРєР° РІР°Р»РёРґР°С‚РѕСЂРѕРІ РґР»СЏ РїРѕР»РµР№ РІРІРѕРґР°.
     _ui.Height_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
     _ui.Width_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
     _ui.Length_Edit->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]*")));
 
-    // Подключение сигнала нажатия кнопки к слоту установки параметров.
+    // РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРёРіРЅР°Р»Р° РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё Рє СЃР»РѕС‚Сѓ СѓСЃС‚Р°РЅРѕРІРєРё РїР°СЂР°РјРµС‚СЂРѕРІ.
     connect(_ui.Next_Button, SIGNAL(pressed()), this, SLOT(Set_Params()));
 }
 
 /**
- * @brief Деструктор класса Params_Window.
+ * @brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Params_Window.
  */
 Params_Window::~Params_Window()
 {
-    // Пустой деструктор, так как нет необходимости в дополнительных действиях.
+    // РџСѓСЃС‚РѕР№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ, С‚Р°Рє РєР°Рє РЅРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РІ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РґРµР№СЃС‚РІРёСЏС….
 }
 
 /**
- * @brief Получает список параметров.
- * @return Список параметров.
+ * @brief РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РїР°СЂР°РјРµС‚СЂРѕРІ.
+ * @return РЎРїРёСЃРѕРє РїР°СЂР°РјРµС‚СЂРѕРІ.
  */
 QStringList Params_Window::Get_Params()
 {
@@ -45,13 +45,13 @@ QStringList Params_Window::Get_Params()
 }
 
 /**
- * @brief Устанавливает параметры на основе введенных данных.
+ * @brief РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹ РЅР° РѕСЃРЅРѕРІРµ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С….
  */
 void Params_Window::Set_Params()
 {
-    // Проверка, что поля 'Height', 'Width' и 'Length' не пусты.
+    // РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РїРѕР»СЏ 'Height', 'Width' Рё 'Length' РЅРµ РїСѓСЃС‚С‹.
     if (_ui.Height_Edit->text() != "" && _ui.Width_Edit->text() != "" && _ui.Length_Edit->text() != "") {
-        // Добавление параметров в список.
+        // Р”РѕР±Р°РІР»РµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ РІ СЃРїРёСЃРѕРє.
         Params.append(_ui.Name_Edit->text());
         Params.append(_ui.Firm_Edit->text());
         Params.append(_ui.Seria_Edit->text());
@@ -62,10 +62,10 @@ void Params_Window::Set_Params()
         Params.append("0");
         Params.append("0");
 
-        this->close(); ///< Закрытие окна после установки параметров.
+        this->close(); ///< Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР° РїРѕСЃР»Рµ СѓСЃС‚Р°РЅРѕРІРєРё РїР°СЂР°РјРµС‚СЂРѕРІ.
     }
     else {
-        // Вывод предупреждения, если какие-либо обязательные поля пусты.
+        // Р’С‹РІРѕРґ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ, РµСЃР»Рё РєР°РєРёРµ-Р»РёР±Рѕ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ РїСѓСЃС‚С‹.
         QMessageBox::warning(this, "Error", "'Height' or 'Width', or 'Length' is empty");
     }
 }

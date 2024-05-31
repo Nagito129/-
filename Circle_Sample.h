@@ -1,6 +1,6 @@
 /**
  * @file Circle_Sample.h
- * @brief Объявление класса Circle_Sample для работы с круговыми объектами
+ * @brief РћР±СЉСЏРІР»РµРЅРёРµ РєР»Р°СЃСЃР° Circle_Sample РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєСЂСѓРіРѕРІС‹РјРё РѕР±СЉРµРєС‚Р°РјРё
  */
 
 #pragma once
@@ -10,140 +10,140 @@
 #include <QPaintEvent>
 #include <QGraphicsSceneMouseEvent>
 
- /**
-  * @brief Класс для работы с круговыми объектами
+/**
+  * @brief РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєСЂСѓРіРѕРІС‹РјРё РѕР±СЉРµРєС‚Р°РјРё
   */
 class Circle_Sample :
-    public QGraphicsItem
+                      public QGraphicsItem
 {
 public:
     /**
-  * @brief Конструктор класса Circle_Sample с параметрами имени, длины, ширины и угла
-  * @param Name Имя объекта
-  * @param Length Длина
-  * @param Width Ширина
-  * @param Angle Угол поворота
+  * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Circle_Sample СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РёРјРµРЅРё, РґР»РёРЅС‹, С€РёСЂРёРЅС‹ Рё СѓРіР»Р°
+  * @param Name РРјСЏ РѕР±СЉРµРєС‚Р°
+  * @param Length Р”Р»РёРЅР°
+  * @param Width РЁРёСЂРёРЅР°
+  * @param Angle РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р°
   */
     Circle_Sample(QString Name, qreal Length, qreal Width, qreal Angle);
 
     /**
-    * @brief Конструктор класса Circle_Sample с параметрами имени, длины и ширины
-    * @param Name Имя объекта
-    * @param Length Длина
-    * @param Width Ширина
+    * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Circle_Sample СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РёРјРµРЅРё, РґР»РёРЅС‹ Рё С€РёСЂРёРЅС‹
+    * @param Name РРјСЏ РѕР±СЉРµРєС‚Р°
+    * @param Length Р”Р»РёРЅР°
+    * @param Width РЁРёСЂРёРЅР°
     */
     Circle_Sample(QString Name, qreal Length, qreal Width);
 
     /**
-    * @brief Установка цвета и уровня нагрузки
-    * @param Color Цвет
-    * @param Workload Уровень нагрузки
+    * @brief РЈСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р° Рё СѓСЂРѕРІРЅСЏ РЅР°РіСЂСѓР·РєРё
+    * @param Color Р¦РІРµС‚
+    * @param Workload РЈСЂРѕРІРµРЅСЊ РЅР°РіСЂСѓР·РєРё
     */
     void Set_Workload(QColor Color, qreal Workload);
 
     /**
-    * @brief Проверка возможности размещения объекта на сцене
-    * @return true, если объект может быть размещен, иначе - false
+    * @brief РџСЂРѕРІРµСЂРєР° РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СЂР°Р·РјРµС‰РµРЅРёСЏ РѕР±СЉРµРєС‚Р° РЅР° СЃС†РµРЅРµ
+    * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°Р·РјРµС‰РµРЅ, РёРЅР°С‡Рµ - false
     */
     bool Spawn_Accept();
 
     /**
-     * @brief Установка режима работы для объекта
-     * @param Mode Режим работы: 0 - OFF, 1 - MOVE, 2 - SPAWN, 3 - DELETE
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹ РґР»СЏ РѕР±СЉРµРєС‚Р°
+     * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹: 0 - OFF, 1 - MOVE, 2 - SPAWN, 3 - DELETE
      */
     void Set_Mode(int Mode);
 
     /**
-     * @brief Получение флага удаления объекта
-     * @return true, если объект должен быть удален, иначе - false
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ С„Р»Р°РіР° СѓРґР°Р»РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
+     * @return true, РµСЃР»Рё РѕР±СЉРµРєС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРґР°Р»РµРЅ, РёРЅР°С‡Рµ - false
      */
     bool Get_Delete_Flag();
 
     /**
-    * @brief Получение угла поворота объекта
-    * @return Угол поворота объекта
+    * @brief РџРѕР»СѓС‡РµРЅРёРµ СѓРіР»Р° РїРѕРІРѕСЂРѕС‚Р° РѕР±СЉРµРєС‚Р°
+    * @return РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РѕР±СЉРµРєС‚Р°
     */
     int Get_Angle();
 
 protected:
 
     /**
-     * @brief Получение ограничивающего прямоугольника объекта
-     * @return Ограничивающий прямоугольник
+     * @brief РџРѕР»СѓС‡РµРЅРёРµ РѕРіСЂР°РЅРёС‡РёРІР°СЋС‰РµРіРѕ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР° РѕР±СЉРµРєС‚Р°
+     * @return РћРіСЂР°РЅРёС‡РёРІР°СЋС‰РёР№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
      */
     QRectF boundingRect() const override;
 
     /**
-   * @brief Получение формы объекта
-   * @return Путь, задающий форму объекта
+   * @brief РџРѕР»СѓС‡РµРЅРёРµ С„РѕСЂРјС‹ РѕР±СЉРµРєС‚Р°
+   * @return РџСѓС‚СЊ, Р·Р°РґР°СЋС‰РёР№ С„РѕСЂРјСѓ РѕР±СЉРµРєС‚Р°
    */
     QPainterPath shape() const override;
 
     /**
-    * @brief Отрисовка объекта
-    * @param Painter Объект для рисования
-    * @param Option Опции стиля
-    * @param Widget Виджет
+    * @brief РћС‚СЂРёСЃРѕРІРєР° РѕР±СЉРµРєС‚Р°
+    * @param Painter РћР±СЉРµРєС‚ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ
+    * @param Option РћРїС†РёРё СЃС‚РёР»СЏ
+    * @param Widget Р’РёРґР¶РµС‚
     */
     void paint(QPainter* Painter, const QStyleOptionGraphicsItem* Option, QWidget* Widget) override;
-   
+
     /**
-    * @brief Обработка события перемещения мыши
-    * @param Event Событие перемещения мыши
+    * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё
+    * @param Event РЎРѕР±С‹С‚РёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ РјС‹С€Рё
     */
     void mouseMoveEvent(QGraphicsSceneMouseEvent* Event) override;
-   
+
     /**
-     * @brief Обработка события нажатия мыши
-     * @param Event Событие нажатия мыши
+     * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РЅР°Р¶Р°С‚РёСЏ РјС‹С€Рё
+     * @param Event РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РјС‹С€Рё
      */
     void mousePressEvent(QGraphicsSceneMouseEvent* Event) override;
-    
+
     /**
-     * @brief Обработка события отпускания мыши
-     * @param Event Событие отпускания мыши
+     * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РѕС‚РїСѓСЃРєР°РЅРёСЏ РјС‹С€Рё
+     * @param Event РЎРѕР±С‹С‚РёРµ РѕС‚РїСѓСЃРєР°РЅРёСЏ РјС‹С€Рё
      */
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* Event) override;
-    
+
     /**
-     * @brief Обработка события вращения колеса мыши
-     * @param Event Событие вращения колеса мыши
+     * @brief РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РІСЂР°С‰РµРЅРёСЏ РєРѕР»РµСЃР° РјС‹С€Рё
+     * @param Event РЎРѕР±С‹С‚РёРµ РІСЂР°С‰РµРЅРёСЏ РєРѕР»РµСЃР° РјС‹С€Рё
      */
     void wheelEvent(QGraphicsSceneWheelEvent* Event) override;
 
 private:
 
     /**
-     * @brief Перечисление режимов работы объекта
+     * @brief РџРµСЂРµС‡РёСЃР»РµРЅРёРµ СЂРµР¶РёРјРѕРІ СЂР°Р±РѕС‚С‹ РѕР±СЉРµРєС‚Р°
      */
     enum Mods {
-        OFF = 0, ///< Отключен
-        MOVE = 1, ///< Перемещение
-        SPAWN = 2, ///< Создание
-        DELETE = 3 ///< Удаление
+        OFF = 0, ///< РћС‚РєР»СЋС‡РµРЅ
+        MOVE = 1, ///< РџРµСЂРµРјРµС‰РµРЅРёРµ
+        SPAWN = 2, ///< РЎРѕР·РґР°РЅРёРµ
+        DELETE = 3 ///< РЈРґР°Р»РµРЅРёРµ
     };
 
-    Mods Mode = SPAWN; ///< Режим работы объекта
-    QString Name; ///< Имя объекта
-    qreal Length, ///< Длина объекта
-        Width, ///< Ширина объекта
-        Angle = 0, ///< Угол поворота объекта
-        Workload_Status; ///< Уровень нагрузки объекта
-    QColor Color_Status, ///< Цвет объекта
-        Coliding_Color, ///< Цвет при коллизии
-        Object_Color; ///< Цвет объекта
-    bool Delete_Flag = false; ///< Флаг удаления объекта
-    QPointF Return_Position; ///< Позиция возврата объекта
+    Mods Mode = SPAWN; ///< Р РµР¶РёРј СЂР°Р±РѕС‚С‹ РѕР±СЉРµРєС‚Р°
+    QString Name; ///< РРјСЏ РѕР±СЉРµРєС‚Р°
+    qreal Length, ///< Р”Р»РёРЅР° РѕР±СЉРµРєС‚Р°
+        Width, ///< РЁРёСЂРёРЅР° РѕР±СЉРµРєС‚Р°
+        Angle = 0, ///< РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РѕР±СЉРµРєС‚Р°
+        Workload_Status; ///< РЈСЂРѕРІРµРЅСЊ РЅР°РіСЂСѓР·РєРё РѕР±СЉРµРєС‚Р°
+    QColor Color_Status, ///< Р¦РІРµС‚ РѕР±СЉРµРєС‚Р°
+        Coliding_Color, ///< Р¦РІРµС‚ РїСЂРё РєРѕР»Р»РёР·РёРё
+        Object_Color; ///< Р¦РІРµС‚ РѕР±СЉРµРєС‚Р°
+    bool Delete_Flag = false; ///< Р¤Р»Р°Рі СѓРґР°Р»РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
+    QPointF Return_Position; ///< РџРѕР·РёС†РёСЏ РІРѕР·РІСЂР°С‚Р° РѕР±СЉРµРєС‚Р°
 
     /**
-     * @brief Проверка наличия коллизий
-     * @return true, если есть коллизии, иначе - false
+     * @brief РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РєРѕР»Р»РёР·РёР№
+     * @return true, РµСЃР»Рё РµСЃС‚СЊ РєРѕР»Р»РёР·РёРё, РёРЅР°С‡Рµ - false
      */
     bool Check_Coliding();
 
     /**
-    * @brief Установка цвета объекта
-    * @param Color Цвет объекта
+    * @brief РЈСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р° РѕР±СЉРµРєС‚Р°
+    * @param Color Р¦РІРµС‚ РѕР±СЉРµРєС‚Р°
     */
     void Set_Obj_Color(QColor Color);
 };

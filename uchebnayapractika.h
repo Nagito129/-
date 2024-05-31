@@ -1,6 +1,6 @@
 /**
  * @file uchebnayapractika.h
- * @brief Объявление класса uchebnayapractika для работы с приложением
+ * @brief РћР±СЉСЏРІР»РµРЅРёРµ РєР»Р°СЃСЃР° uchebnayapractika РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїСЂРёР»РѕР¶РµРЅРёРµРј
  */
 
 #pragma once
@@ -20,8 +20,8 @@
 #include "Params_Window.h"
 #include "B_Parts.h"
 
- /**
-  * @brief Класс для работы с приложением
+/**
+  * @brief РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїСЂРёР»РѕР¶РµРЅРёРµРј
   */
 class uchebnayapractika : public QMainWindow
 {
@@ -29,87 +29,87 @@ class uchebnayapractika : public QMainWindow
 
 public:
     /**
-     * @brief Конструктор класса uchebnayapractika
-     * @param parent Родительский виджет
+     * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° uchebnayapractika
+     * @param parent Р РѕРґРёС‚РµР»СЊСЃРєРёР№ РІРёРґР¶РµС‚
      */
     uchebnayapractika(QWidget* parent = nullptr);
 
     /**
-     * @brief Деструктор класса uchebnayapractika
+     * @brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° uchebnayapractika
      */
     ~uchebnayapractika();
 
 protected:
     /**
-     * @brief Обработчик события нажатия клавиши
-     * @param e Событие нажатия клавиши
+     * @brief РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€Рё
+     * @param e РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€Рё
      */
     void keyPressEvent(QKeyEvent* e) override;
 
 private:
-    Ui::uchebnayapractikaClass ui; ///< Интерфейс
+    Ui::uchebnayapractikaClass ui; ///< РРЅС‚РµСЂС„РµР№СЃ
 
     /**
-     * @brief Перечисление режимов работы
+     * @brief РџРµСЂРµС‡РёСЃР»РµРЅРёРµ СЂРµР¶РёРјРѕРІ СЂР°Р±РѕС‚С‹
      */
     enum Mods {
-        M_OFF = 0, ///< Отключено
-        M_ADD = 1, ///< Добавление
-        M_DELETE = 2, ///< Удаление
-        M_MOVE = 3, ///< Перемещение
+        M_OFF = 0, ///< РћС‚РєР»СЋС‡РµРЅРѕ
+        M_ADD = 1, ///< Р”РѕР±Р°РІР»РµРЅРёРµ
+        M_DELETE = 2, ///< РЈРґР°Р»РµРЅРёРµ
+        M_MOVE = 3, ///< РџРµСЂРµРјРµС‰РµРЅРёРµ
     };
 
     /**
-     * @brief Перечисление форм элементов системы
+     * @brief РџРµСЂРµС‡РёСЃР»РµРЅРёРµ С„РѕСЂРј СЌР»РµРјРµРЅС‚РѕРІ СЃРёСЃС‚РµРјС‹
      */
     enum System_Form {
-        SQUARE = 0, ///< Квадрат
-        CIRCLE = 1 ///< Круг
+        SQUARE = 0, ///< РљРІР°РґСЂР°С‚
+        CIRCLE = 1 ///< РљСЂСѓРі
     };
 
-    const QRectF Screen_Geometry = geometry(); ///< Геометрия экрана
-    const qreal Screen_H = Screen_Geometry.height(), ///< Высота экрана
-        Screen_W = Screen_Geometry.width(); ///< Ширина экрана
-    QString File_Name = ""; ///< Имя файла
-    System_Item* Item; ///< Элемент системы
-    B_Parts* Part; ///< Деталь
-    QGraphicsScene Plan; ///< Сцена
+    const QRectF Screen_Geometry = geometry(); ///< Р“РµРѕРјРµС‚СЂРёСЏ СЌРєСЂР°РЅР°
+    const qreal Screen_H = Screen_Geometry.height(), ///< Р’С‹СЃРѕС‚Р° СЌРєСЂР°РЅР°
+        Screen_W = Screen_Geometry.width(); ///< РЁРёСЂРёРЅР° СЌРєСЂР°РЅР°
+    QString File_Name = ""; ///< РРјСЏ С„Р°Р№Р»Р°
+    System_Item* Item; ///< Р­Р»РµРјРµРЅС‚ СЃРёСЃС‚РµРјС‹
+    B_Parts* Part; ///< Р”РµС‚Р°Р»СЊ
+    QGraphicsScene Plan; ///< РЎС†РµРЅР°
 
-    QList <System_Item*> Items; ///< Список элементов
-    QList <B_Parts*> Build_Parts; ///< Список деталей
+    QList <System_Item*> Items; ///< РЎРїРёСЃРѕРє СЌР»РµРјРµРЅС‚РѕРІ
+    QList <B_Parts*> Build_Parts; ///< РЎРїРёСЃРѕРє РґРµС‚Р°Р»РµР№
 
-    Mods Mode; ///< Режим
-    System_Form Form; ///< Форма элемента
-    bool is_Build; ///< Признак построения
+    Mods Mode; ///< Р РµР¶РёРј
+    System_Form Form; ///< Р¤РѕСЂРјР° СЌР»РµРјРµРЅС‚Р°
+    bool is_Build; ///< РџСЂРёР·РЅР°Рє РїРѕСЃС‚СЂРѕРµРЅРёСЏ
 
     /**
-     * @brief Вывод сообщения в консоль
-     * @param isKey Флаг для обработки клавиатурного ввода
+     * @brief Р’С‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ РІ РєРѕРЅСЃРѕР»СЊ
+     * @param isKey Р¤Р»Р°Рі РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РєР»Р°РІРёР°С‚СѓСЂРЅРѕРіРѕ РІРІРѕРґР°
      */
     void Console_Widget(bool isKey);
 
     /**
-     * @brief Вывод сообщения в консоль
-     * @param String Сообщение для вывода
+     * @brief Р’С‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ РІ РєРѕРЅСЃРѕР»СЊ
+     * @param String РЎРѕРѕР±С‰РµРЅРёРµ РґР»СЏ РІС‹РІРѕРґР°
      */
     void Pout(QString String);
 
     /**
-     * @brief Добавление элемента системы
-     * @param Path Путь
-     * @param Form Форма элемента
+     * @brief Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° СЃРёСЃС‚РµРјС‹
+     * @param Path РџСѓС‚СЊ
+     * @param Form Р¤РѕСЂРјР° СЌР»РµРјРµРЅС‚Р°
      */
     void Add_Sys_Item(QString Path, System_Form Form);
 
     /**
-     * @brief Установка режима работы для элементов и деталей
-     * @param Mode Режим работы
+     * @brief РЈСЃС‚Р°РЅРѕРІРєР° СЂРµР¶РёРјР° СЂР°Р±РѕС‚С‹ РґР»СЏ СЌР»РµРјРµРЅС‚РѕРІ Рё РґРµС‚Р°Р»РµР№
+     * @param Mode Р РµР¶РёРј СЂР°Р±РѕС‚С‹
      */
     void Set_Items_And_Parts_Mode(int Mode);
 
     /**
-     * @brief Запись в файл
-     * @param File Файл для записи
+     * @brief Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р»
+     * @param File Р¤Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё
      */
     void Write_In_File(QFile& File);
 
